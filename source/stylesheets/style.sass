@@ -1,33 +1,58 @@
-#header
-  height: 200px
-  width: 100%
-  background: #111
-  color: #fff
-  #content
-    width: 940px
-    height: 200px
-    margin: auto
-  #title
-    position: relative
-    left: -140px
-    height: 200px
+@font-face
+  font-family: Droid
+  src: url('/stylesheets/DroidSans.ttf')
+
+@font-face
+  font-family: Droid
+  font-weight: bold
+  src: url('/stylesheets/DroidSans-Bold.ttf')
+
+html, body
+  font-family: 'Droid' sans
+
+a
+  color: darken(#81C356, 10%)
+  text-decoration: none
+
+#container
+  width: 800px
+  margin: auto
+  #header
+    text-align: center
+    a#home
+      display: inline-block
+      color: #333
+    h1, h2
+      display: inline-block
     h1
-      font-size: 40px
-      line-height: 200px
-  #face
-    background-image: url('/images/me.png')
-    width: 300px
-    height: 181px
-    position: relative
-    top: 19px
-    left: -160px
-    float: left
+      font-size: 3em
+    #nav
+      ul
+        padding: 0
+        list-style: none
+      li
+        display: inline-block
+        margin: 0 5px
+      a
+        color: #999
+  #blog
+    article
+      padding: 10px
+      &:not(:first-child)
+        border-top: 1px solid #eee
+      .heading
+        h2.title
+          float: left
+        .date
+          float: right
+          color: #666
+          font-size: 12px
+.highlight
+  padding: 10px 0
+  border-radius: 5px
+  border: 1px solid #666
+  pre
+    white-space: pre-wrap
 
-#main
-  margin-top: 20px
-
-#sidebar
-  text-align: right
-  border-right: 1px solid #999
-
-#content
+.clearfix
+  clear: both

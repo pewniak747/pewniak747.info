@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/wbzyl/rack-codehighlighter.git
+  revision: 64bf50520cb1d563432832ae30d85bbd94cec5bd
+  specs:
+    rack-codehighlighter (0.5.0)
+      nokogiri (>= 1.4.1)
+      rack (>= 1.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -61,6 +69,7 @@ GEM
     middleman-livereload (0.2.1)
       guard-livereload (~> 0.3.1)
     multi_json (1.0.4)
+    nokogiri (1.5.2)
     padrino-core (0.10.6)
       activesupport (~> 3.2.0)
       http_router (~> 0.10.2)
@@ -109,4 +118,5 @@ DEPENDENCIES
   hpricot
   middleman
   middleman-blog
+  rack-codehighlighter!
   sass

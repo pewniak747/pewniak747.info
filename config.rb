@@ -18,3 +18,10 @@ configure :build do
   # Enable cache buster
   # activate :cache_buster
 end
+
+require 'rack/codehighlighter'
+use Rack::Codehighlighter, 
+  :pygments_api,
+  :element => "pre>code",
+  :pattern => /\A:::([-_+\w]+)\s*\n/,
+  :markdown => true
