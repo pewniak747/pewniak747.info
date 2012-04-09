@@ -13,6 +13,12 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.2.7)
+    capistrano (2.8.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     chunky_png (1.2.5)
     coffee-script (2.2.0)
       coffee-script-source
@@ -37,6 +43,7 @@ GEM
       guard (>= 0.4.0)
       multi_json (~> 1.0.3)
     haml (3.1.4)
+    highline (1.6.2)
     hike (1.2.1)
     hpricot (0.8.6)
     http_router (0.10.2)
@@ -69,6 +76,13 @@ GEM
     middleman-livereload (0.2.1)
       guard-livereload (~> 0.3.1)
     multi_json (1.0.4)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.1.4)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     nokogiri (1.5.2)
     padrino-core (0.10.6)
       activesupport (~> 3.2.0)
@@ -114,6 +128,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capistrano
   haml
   hpricot
   middleman
