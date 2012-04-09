@@ -22,7 +22,7 @@ namespace :deploy do
   
   desc 'Run middleman to update site before uploading'
   task :update_middleman do
-    run("export RUBYOPT=-Ku && cd #{current_path} && rm -rf _site/* && bundle exec jekyll")
+    run("export RUBYOPT=-Ku && cd #{current_path} && bundle install && rm -rf build/* && bundle exec middleman build")
   end
   
 end
