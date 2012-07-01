@@ -19,10 +19,10 @@ namespace :deploy do
     desc "#{t} task is a no-op with middleman"
     task t, :roles => :app do ; end
   end
-  
+
   desc 'Run middleman to update site before uploading'
   task :update_middleman do
     run("export RUBYOPT=-Ku && cd #{current_path} && bundle install && rm -rf build/* && bundle exec middleman build")
   end
-  
+
 end
