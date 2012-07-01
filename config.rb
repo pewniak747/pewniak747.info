@@ -1,5 +1,6 @@
 activate :blog
-# set :blog_permalink, ":year/:month/:day/:title.html"
+activate :directory_indexes
+set :blog_permalink, ":year/:month/:day/:title"
 # set :blog_summary_separator, /READMORE/
 # set :blog_summary_length, 500
 #

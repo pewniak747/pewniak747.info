@@ -1,0 +1,6 @@
+%ul
+  - data.blog.tags.to_a.sort_by!{|t| t[1].pages.size }.each do |slug, tag|
+    %li
+      %a{href: tag_path(tag.title)}
+        %h3= tag.title
+        %p #{tag.pages.size} articles
