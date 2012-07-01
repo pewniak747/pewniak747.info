@@ -2,11 +2,11 @@
   %article{:class => (i == 0) ? 'first' : ''}
     .heading
       %h2.title
-        %a{:href => article.url}= article.title
+        %a{:href => article.url.gsub(/\.html$/, '')}= article.title
       %time.date= article.date.strftime('%b %e %Y')
       .clearfix
     - if i == 0
       .content
         = article.summary
         .more
-          %a{href: article.url} read more &raquo;
+          %a{href: article.url.gsub(/\.html$/, '')} read more &raquo;
