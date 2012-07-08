@@ -19,8 +19,12 @@ a
 #container
   width: 800px
   margin: auto
+  padding: 0 30px 30px 30px
+  background-color: #fff
   #header
     text-align: center
+    padding-bottom: 30px
+    border-bottom: 1px solid #eee
     a#home
       display: inline-block
       color: #333
@@ -29,9 +33,10 @@ a
     h1
       font-size: 3em
     #nav
-      margin: 20px 0
+      margin: 0
       ul
         padding: 0
+        margin: 0
         list-style: none
       li
         display: inline-block
@@ -41,8 +46,6 @@ a
   #blog
     article
       padding: 10px
-      &:not(:first-child)
-        border-top: 1px solid #eee
       .heading
         h2.title
           float: left
@@ -52,9 +55,15 @@ a
           font-size: 12px
           position: relative
           top: 26px
+      #disqus_thread
+        margin-top: 30px
+        padding-top: 30px
+        border-top: 1px solid #eee
+img#me
+  float: right
+  margin-left: 10px
 .highlight
   padding: 0 1em
-  border-radius: 5px
   border: 1px solid #666
   pre
     white-space: pre-wrap
