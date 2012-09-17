@@ -1,6 +1,10 @@
-activate :blog
-activate :directory_indexes
+activate :blog do |blog|
+  blog.sources = 'articles/:year-:month-:day-:title'
+  blog.permalink = ':year/:month/:day/:title'
+end
+
 activate :syntax
+activate :directory_indexes
 set :blog_layout_engine, :haml
 
 page "/feed.xml", :layout => false
