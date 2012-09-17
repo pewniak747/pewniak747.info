@@ -9,14 +9,17 @@ Github's webhooks feature is great, hovewer many people still like to self-host 
 
 To get it to work on your remote repo:
 
-    :::bash
-    git clone git://gist.github.com/2352380.git /tmp
-    mv /tmp/post-receive-pivotal $YOUR_GIT_REPO/.git/hooks/post-receive
-  (alternatively you can keep it in .git/hooks/post-receive-pivotal and make original post-receive run it)
+```
+git clone git://gist.github.com/2352380.git /tmp
+mv /tmp/post-receive-pivotal $YOUR_GIT_REPO/.git/hooks/post-receive
+```
 
-    :::bash
-    chmod +x $YOUR_GIT_REPO/.git/hooks/post-receive
-    git config pivotal.token [YOUR_PIVOTAL_TOKEN]
+(alternatively you can keep it in .git/hooks/post-receive-pivotal and make original post-receive run it)
+
+```
+chmod +x $YOUR_GIT_REPO/.git/hooks/post-receive
+git config pivotal.token [YOUR_PIVOTAL_TOKEN]
+```
 
 Now you can do commit messages like "[finishes #123456] bugfix" and after you push comments will be added to your pivotal story.
 
