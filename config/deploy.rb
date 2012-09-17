@@ -1,5 +1,5 @@
 set :application,       'blog2'
-set :repository,        "pewniak747.info:/opt/git/blog2.git"
+set :repository,        "git://github.com/pewniak747/pewniak747.info.git"
 set :scm,               :git
 set :use_sudo,          false
 set :host,              'pewniak747.info'
