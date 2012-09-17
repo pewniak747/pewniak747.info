@@ -1,6 +1,5 @@
 ---
 title: Jekyll basics tutorial
-date: 24/12/2009
 ---
 ## Introduction
 
