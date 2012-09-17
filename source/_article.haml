@@ -1,0 +1,4 @@
+%article
+  = partial 'article_header', locals: { article: article }
+  .content= article.body
+  = partial 'comments'

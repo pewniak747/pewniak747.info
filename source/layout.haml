@@ -33,8 +33,7 @@
       #content
         #blog
           - if is_blog_article?
-            - content_for :blog_article, yield
-            = partial 'article_template'
+            = partial 'article', locals: { article: current_article }
           - else
             = yield
       .clearfix
