@@ -2,6 +2,6 @@
   %article
     .heading
       %h2.title
-        %a{:href => article.url.gsub(/\.html$/, '')}= article.title
+        %a{:href => article.url}= article.title
       %time.date= article.date.strftime('%b %e %Y')
       .clearfix
