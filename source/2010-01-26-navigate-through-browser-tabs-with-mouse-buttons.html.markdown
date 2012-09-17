@@ -17,42 +17,46 @@ I created two simple scripts that send signals of keys being pressed. Ctrl+Tab i
 
 We'll need a _xsendkeycode_ program. I assume you don't have it on your linux desktop, so download it form repositories.
 
-    :::bash
-    $ sudo apt-get install xsendkeycode
+```
+$ sudo apt-get install xsendkeycode
+```
 
 ## Write scripts
 
 Create these two scripts in a safe place:
 
-ff_nexttab.sh
+```
+#!/bin/bash
 
-    :::bash
-    #!/bin/bash
+# ff_nexttab.sh
 
-    xsendkeycode 37 1
-    xsendkeycode 23 1
-    xsendkeycode 23 0
-    xsendkeycode 37 0
+xsendkeycode 37 1
+xsendkeycode 23 1
+xsendkeycode 23 0
+xsendkeycode 37 0
+```
 
-ff_prevtab.sh
+```
+#!/bin/bash
 
-    :::bash
-    #!/bin/bash
+# ff_prevtab.sh
 
-    xsendkeycode 37 1
-    xsendkeycode 50 1
-    xsendkeycode 23 1
-    xsendkeycode 23 0
-    xsendkeycode 50 0
-    xsendkeycode 37 0
+xsendkeycode 37 1
+xsendkeycode 50 1
+xsendkeycode 23 1
+xsendkeycode 23 0
+xsendkeycode 50 0
+xsendkeycode 37 0
+```
 
 Xsendkeycode sends key-pressed or key-released signal. 37 means LCtrl, 23 is Tab ans 50 RShift. 1 means press, 0 release. Can you see your browser's shortcuts now?
 
 Make both scripts executable!
 
-    :::bash
-    $ chmod +x ff_nexttab.sh
-    $ chmod +x ff_prevtab.sh
+```
+$ chmod +x ff_nexttab.sh
+$ chmod +x ff_prevtab.sh
+```
 
 ## Connect
 
@@ -60,8 +64,9 @@ Connecting scripts to mouse keys differs on various environments. I use GNOME wi
 
 So, open up CompizConfig and navigate to "General -> Commands". In fields 1 and 2 type absolute paths to your scripts, ie.
 
-    :::bash
-    /home/pewniak747/Scripts/ff_nexttab.sh
+```
+/home/pewniak747/Scripts/ff_nexttab.sh
+```
 
 Then, go to tab "mouse shortcuts" and set fields 1 and 2 to your mouse buttons. In my case these are buttons 8 and 9.
 
