@@ -19,20 +19,22 @@ So it's perfect kit for day-to-day Rails development.
 
 Installing is dead-simple via rubygems:
 
-    :::bash
-    gem install checker
+```
+gem install checker
+```
 
 And using is even simpler. Just say `checker` to process staged git files:
 
-    :::bash
-    [ RUBY ]
-    [ HAML ]
-    [ PRY ]
-    Checking source/2012/08/04/Checker-gem-for-ruby-rails-development.markdown... pry -> OK,  remote_pry -> OK
-    [ COFFEESCRIPT ]
-    [ JAVASCRIPT ]
-    [ SASS ]
-    [ YAML ]
+```
+[ RUBY ]
+[ HAML ]
+[ PRY ]
+Checking source/2012/08/04/Checker-gem-for-ruby-rails-development.markdown... pry -> OK,  remote_pry -> OK
+[ COFFEESCRIPT ]
+[ JAVASCRIPT ]
+[ SASS ]
+[ YAML ]
+```
 
 It's convinient to add `checker` to .git/hooks/pre-commit . That way every single commit will be processed before saving.
 
