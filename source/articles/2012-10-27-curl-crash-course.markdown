@@ -85,6 +85,13 @@ Sending a cookie:
 ``` sh
 curl -b "session_id=4337a82f37c7218e41931b9bcc60c943" http://api.example.com/endpoint
 ```
+
+Fetching headers only (using HTTP HEAD method - can be handy if response body is long):
+
+``` sh
+curl -I http://api.example.com/endpoint
+```
+
 ## Debugging JSON
 
 I recommend to install [colorful_json][1] gem - piping curl to `cjson` will nicely format the output:
