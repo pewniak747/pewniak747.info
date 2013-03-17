@@ -112,4 +112,4 @@ curl https://api.flattr.com/rest/v2/users/smgt/things | cjson
 
 That's all! I hope you learned useful ways of using curl to debug web services. Do you know other useful curl tricks, or use other tools to aid HTTP debugging? Let me know in the comments!
 
-[1]: https://github.com/simon/colorful_json
+[1]: https://github.com/smgt/colorful_json
