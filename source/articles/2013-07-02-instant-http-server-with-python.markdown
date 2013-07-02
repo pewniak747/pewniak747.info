@@ -19,3 +19,13 @@ python -m SimpleHTTPServer 8888
 ```
 
 It's useful for development, for example of Single Page Applications. Enjoy :)
+
+EDIT:
+
+There's how to do it in ruby:
+
+``` bash
+ruby -run -e httpd -- -p 8000 .
+```
+
+Ironically I always used python one even though I use ruby far more often :)
