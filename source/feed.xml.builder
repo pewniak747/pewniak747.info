@@ -1,4 +1,4 @@
-xml.instruct!
+xml.instruct! 'xml-stylesheet', { href: '/stylesheets/style.css', type: 'text/stylesheet' }
 xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   xml.title "Tomasz Pewiński's blog"
   xml.id "http://pewniak747.info/"
