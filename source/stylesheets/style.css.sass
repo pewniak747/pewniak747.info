@@ -26,7 +26,7 @@ a
       display: inline-block
     h1
       font-size: 3em
-    #nav
+    nav
       margin: 0
       ul
         padding: 0
@@ -43,12 +43,19 @@ a
       .heading
         margin: 5px 0
         h1.title
-          float: left
           margin: 0
+          width: 75%
+          float: left
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
         .date
-          float: right
           color: #666
           font-size: 12px
+          float: left
+          width: 25%
+          text-align: right
+          line-height: 28px
       .content
         text-align: justify
         p
@@ -68,9 +75,14 @@ a
         margin-top: 30px
         padding-top: 30px
         border-top: 1px solid #eee
-img#me
+#me
   float: right
   margin-left: 30px
+  max-width: 300px
+  min-width: 150px
+  width: 50%
+  position: relative
+  top: -60px
 .highlight
   padding: 0 1em
   margin: 1em 0
@@ -81,3 +93,24 @@ img#me
 
 .clearfix
   clear: both
+
+@media (max-width: 500px)
+  #home
+    max-width: 300px
+  nav
+    li
+      display: block !important
+  article
+    .heading
+      margin: 0 !important
+    h1.title
+      font-size: 1em
+      width: 100% !important
+      text-align: center
+    .date
+      display: none
+  #me
+    float: none
+    margin: 0
+    width: 100%
+    top: 0
