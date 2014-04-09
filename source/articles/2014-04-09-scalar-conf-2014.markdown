@@ -1,0 +1,49 @@
+---
+title: Scalar Conf 2014
+date: 2014-04-09 20:10 +02:00
+---
+
+Last week I had the pleasure to attend [Scalar][1] conference in Warsaw, Poland. This was my first conference specifically related to scala. Heck, even my first conference at which java isn't used as a negative word :) So I thought I'd share my thoughts about it.
+
+I've been playing with scala for some time (mostly [Play! Framework][2] and [Akka][3]), and was curious how the community looks like and what it has to say. I had a chance to meet scala folks from all around the Europe. They use the language for many different purposes. Overall, the conference was a great learning experience for me (I haven't got time to stay at the party though, which is a shame).
+
+Here are highlights from my favourite talks:
+
+## database access with slick - Stefan Zeiger
+
+[Stefan][4] introduced [slick][5], which is a library for accessing relational databases in scala. What's great about it, it allows you to write code that feels like operating on a regular collection, yet talks to the database. Check out the samples [here][6].
+
+Stefan also talked about what's the future for slick. It's going to be the default db driver in future versions of play, which I think is great (the current anorm requires you to type SQL by hand, and it's not really great productivity-wise, especially for beginners like me :))
+
+## simple, fast & agile rest with spray.io - Adam Warski
+
+[Adam][7] showed how [spray.io][8] can be used to quickly create REST api's, by (successfully!) live-coding on stage. I was really impressed, because when I tried using spray (maybe a year ago), I felt like groping in the dark. Spray definitely improved since then, and it seems like a great way to build web services. I especially liked the directive mechanism - how different functions combine to form an endpoint, passing immutable request model around (you could have a directive that accepts GET requests, another one that reacts only to specific path and third one acting as authentication layer). Adam covered testing the service too.
+
+It probably wouldn't fit in the timeslot, but I wish he mentioned how to integrate spray with akka for exposing your actor systems on the web (btw, spray will become a part of akka project in the future).
+
+## doing crazy algebra with scala types - Jon Pretty
+
+[Jon][9] had 'crazy' in his talk title, and he delivered. Building up on small set of assumption (for example, a tuple (X, Y) is represented by multiplication, 2 represents a Boolean etc.), Jon formulated some interesting problems, and then solved them using mathematics and humour :) For example, he represented a List and binary Tree with arithmetic operations. Later on he even differentiated a List (a result of this operation was one-hole context, a list without its focus element). It definitely was one of the most entertaining and refreshing talks at scalar.
+
+There were more interesting talks ([Grzegorz Kubiak][10] has demonstrated akka cluster of raspberry-pi's, Mateusz Fedoryszak, Michal Oniszczuk and their quest to find the essence of academia using [spark][11] for example) but those three are definitely my favourites.
+
+Last but not least, it should be noted that the conference was organized really smoothly. The talks were just the right size, often breaks allowed for discussions, and lunch was delicious. And that's despite the fact that's scalar's first edition - bravo to the organizers! I'm definitely looking forward to attending next year :)
+
+By the way, and if you're interested, check out my scala projects on github:
+
+* [music-match][12], a music recommendation engine
+* [instapuzzle][13], multiplayer jigsaw puzzle solving game
+
+[1]: http://scalar-conf.com
+[2]: http://playframework.com
+[3]: http://akka.io
+[4]: http://twitter.com/StefanZeiger
+[5]: http://slick.typesafe.com
+[6]: http://slick.typesafe.com/doc/2.0.0/gettingstarted.html#slick-examples
+[7]: https://twitter.com/adamwarski
+[8]: http://spray.io
+[9]: http://rapture.io
+[10]: https://twitter.com/grzkubiak
+[11]: http://spark.apache.org
+[12]: https://github.com/pewniak747/music-match
+[13]: https://github.com/pewniak747/instapuzzle
