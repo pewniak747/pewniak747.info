@@ -7,86 +7,86 @@ html, body
   font-family: 'Open-Sans', helvetica, sans-serif
   margin: 0
   padding: 0
+  background-color: #fff
 
 a
   color: $basic
   text-decoration: none
 
-#container
-  background-color: #fff
-  #header
-    text-align: center
-    padding: 50px 0
-    margin-bottom: 50px
-    border-bottom: 1px solid lighten($deep-gray, 10%)
-    background-color: $deep-gray
+#header
+  text-align: center
+  padding: 50px 0
+  margin-bottom: 50px
+  border-bottom: 1px solid lighten($deep-gray, 10%)
+  background-color: $deep-gray
+  color: #fff
+  a
     color: #fff
-    a
-      color: #fff
-    a#home
-      display: inline-block
-    h1
-      font-size: 3em
-      @include transition(color 300ms linear, text-shadow 300ms linear)
-      margin-left: 10px
-      margin-right: 10px
-      &:hover
-        color: darken(#fff, 20%)
-        text-shadow: 0px -1px 0px #374683
-    h1, h2
-      display: inline-block
-    nav
+  a#home
+    display: inline-block
+  h1
+    font-size: 3em
+    @include transition(color 300ms linear, text-shadow 300ms linear)
+    margin-left: 10px
+    margin-right: 10px
+    &:hover
+      color: darken(#fff, 20%)
+      text-shadow: 0px -1px 0px #374683
+  h1, h2
+    display: inline-block
+  nav
+    margin: 0
+    ul
+      padding: 0
       margin: 0
-      ul
-        padding: 0
-        margin: 0
-        list-style: none
-      li
-        display: block
-        margin: 0 5px
-        letter-spacing: 1px
-  #content
-    max-width: 800px
-    margin: auto
-    margin-bottom: 50px
-    padding: 0 30px 30px 30px
-  #blog
-    article
-      padding: 10px
-      .heading
-        margin: 5px 0
-        h1.title
-          margin: 0
-          width: 100%
-          float: left
-          text-align: center
-          white-space: nowrap
-          overflow: hidden
-          text-overflow: ellipsis
-          font-size: 1em
-        .date
-          color: #666
-          font-size: 12px
-          display: none
-      .content
-        text-align: justify
-        p
-          font-size: 16px
-          line-height: 24px
-          color: #444
-        pre
-          font:
-            family: 'Inconsolata' monospace
-            size: 14px
-        code
-          background-color: #eee
-          padding: 2px 5px
-          border-radius: 4px
+      list-style: none
+    li
+      display: block
+      margin: 0 5px
+      letter-spacing: 1px
 
-      #disqus_thread
-        margin-top: 30px
-        padding-top: 30px
-        border-top: 1px solid #eee
+#content
+  max-width: 800px
+  margin: auto
+  margin-bottom: 50px
+  padding: 0 30px 30px 30px
+
+article
+  padding: 10px
+  .heading
+    margin: 5px 0
+    h1.title
+      margin: 0
+      width: 100%
+      float: left
+      text-align: center
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      font-size: 1em
+    .date
+      color: #666
+      font-size: 12px
+      display: none
+  .content
+    text-align: justify
+    p
+      font-size: 16px
+      line-height: 24px
+      color: #444
+    pre
+      font:
+        family: 'Inconsolata' monospace
+        size: 14px
+    code
+      background-color: #eee
+      padding: 2px 5px
+      border-radius: 4px
+
+#disqus_thread
+  margin-top: 30px
+  padding-top: 30px
+  border-top: 1px solid #eee
 
 #me
   float: none
@@ -106,14 +106,14 @@ a
   clear: both
 
 @media (min-width: 768px)
-  #container #header
+  #header
     h1
       font-size: 4em
     nav
       li
         display: inline-block
 
-  #container #blog article
+  article
     .heading
       h1.title
         font-size: 1.4em
