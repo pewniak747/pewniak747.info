@@ -24,8 +24,10 @@ a
     a#home
       display: inline-block
     h1
-      font-size: 4em
+      font-size: 3em
       -webkit-transition: color 300ms linear, text-shadow 300ms linear
+      margin-left: 10px
+      margin-right: 10px
       &:hover
         color: darken(#fff, 20%)
         text-shadow: 0px -1px 0px #374683
@@ -38,7 +40,7 @@ a
         margin: 0
         list-style: none
       li
-        display: inline-block
+        display: block
         margin: 0 5px
         letter-spacing: 1px
   #content
@@ -53,18 +55,17 @@ a
         margin: 5px 0
         h1.title
           margin: 0
-          width: 75%
+          width: 100%
           float: left
+          text-align: center
           white-space: nowrap
           overflow: hidden
           text-overflow: ellipsis
+          font-size: 1em
         .date
           color: #666
           font-size: 12px
-          float: left
-          width: 25%
-          text-align: right
-          line-height: 28px
+          display: none
       .content
         text-align: justify
         p
@@ -84,14 +85,13 @@ a
         margin-top: 30px
         padding-top: 30px
         border-top: 1px solid #eee
+
 #me
-  float: right
-  margin-left: 30px
-  max-width: 300px
-  min-width: 150px
-  width: 50%
-  position: relative
-  top: -60px
+  float: none
+  margin: 0
+  width: 100%
+  top: 0
+
 .highlight
   padding: 0 1em
   margin: 1em 0
@@ -103,25 +103,32 @@ a
 .clearfix
   clear: both
 
-@media (max-width: 500px)
-  #home
-    max-width: 300px
-  #container #header h1
-    font-size: 3em
-  nav
-    li
-      display: block !important
-  article
+@media (min-width: 768px)
+  #container #header
+    h1
+      font-size: 4em
+    nav
+      li
+        display: inline-block
+
+  #container #blog article
     .heading
-      margin: 0 !important
-    h1.title
-      font-size: 1em
-      width: 100% !important
-      text-align: center
-    .date
-      display: none
+      h1.title
+        font-size: 1.4em
+        width: 75%
+        text-align: left
+      .date
+        display: inline-block
+        float: left
+        width: 25%
+        text-align: right
+        line-height: 28px
+
   #me
-    float: none
-    margin: 0
-    width: 100%
-    top: 0
+    float: right
+    margin-left: 30px
+    max-width: 300px
+    min-width: 150px
+    width: 50%
+    position: relative
+    top: -60px
