@@ -1,3 +1,5 @@
+@import "bourbon"
+
 $basic: #6B8F0B
 $deep-gray: #333
 
@@ -25,7 +27,7 @@ a
       display: inline-block
     h1
       font-size: 3em
-      -webkit-transition: color 300ms linear, text-shadow 300ms linear
+      @include transition(color 300ms linear, text-shadow 300ms linear)
       margin-left: 10px
       margin-right: 10px
       &:hover

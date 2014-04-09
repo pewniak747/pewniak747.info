@@ -5,6 +5,9 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     blankslate (3.1.2)
+    bourbon (3.1.8)
+      sass (>= 3.2.0)
+      thor
     builder (3.1.4)
     capistrano (2.13.5)
       highline
@@ -45,6 +48,8 @@ GEM
       maruku (~> 0.6.0)
       middleman-core (~> 3.0.1)
       tzinfo (~> 0.3.0)
+    middleman-bourbon (0.0.2)
+      bourbon (>= 2.1.0)
     middleman-core (3.0.6)
       activesupport (~> 3.2.6)
       bundler (~> 1.1)
@@ -140,6 +145,7 @@ DEPENDENCIES
   hpricot
   middleman
   middleman-blog
+  middleman-bourbon
   middleman-syntax
   redcarpet
   sass

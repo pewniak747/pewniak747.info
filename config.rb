@@ -5,6 +5,7 @@ end
 
 activate :syntax
 activate :directory_indexes
+activate :bourbon
 set :blog_layout_engine, :haml
 
 page "/feed.xml", :layout => false
