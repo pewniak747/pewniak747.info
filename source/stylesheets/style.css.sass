@@ -51,33 +51,37 @@ a
   margin-bottom: 50px
   padding: 0 30px 30px 30px
 
+.post-listing
+  list-style: none
+  margin: 0
+  padding: 0
+  text-align: center
+  h2
+    margin: 5px 0
+    line-height: 1.5
+  .separator
+    color: #eee
+  li:last-child .separator
+    display: none
+
 article
   padding: 10px
   .heading
     margin: 5px 0
     h1.title
-      margin: 0
-      width: 100%
-      float: left
       text-align: center
-      white-space: nowrap
-      overflow: hidden
-      text-overflow: ellipsis
-      font-size: 1em
+      font-size: 2.6em
     .date
       color: #666
       font-size: 12px
-      display: none
   .content
-    text-align: justify
-    p
+    p, li
       font-size: 16px
-      line-height: 24px
+      line-height: 1.5
       color: #444
     pre
-      font:
-        family: 'Inconsolata' monospace
-        size: 14px
+      font-family: 'Inconsolata' monospace
+      line-height: 1.5
     code
       background-color: #eee
       padding: 2px 5px
@@ -116,15 +120,7 @@ article
   article
     .heading
       h1.title
-        font-size: 1.7em
-        width: 75%
         text-align: left
-      .date
-        display: inline-block
-        float: left
-        width: 25%
-        text-align: right
-        line-height: 28px
 
   #me
     float: right
@@ -134,3 +130,4 @@ article
     width: 50%
     position: relative
     top: -60px
+
