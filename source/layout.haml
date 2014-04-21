@@ -13,7 +13,7 @@
     = partial 'google_analytics'
   %body
     #container
-      #header
+      %header
         %a#home{href: '/'}
           %h1 Tomasz Pewinski
         %nav
@@ -35,10 +35,8 @@
             %li &middot;
             %li
               %a{href: 'https://linkedin.com/pub/tomasz-pewiński/70/955/94', target: '_blank'}linkedin
-      #content
-        #blog
-          - if is_blog_article?
-            = partial 'article', locals: { article: current_article }
-          - else
-            = yield
-      .clearfix
+      %section#content
+        - if is_blog_article?
+          = partial 'article', locals: { article: current_article }
+        - else
+          = yield
