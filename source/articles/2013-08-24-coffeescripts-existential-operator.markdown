@@ -63,7 +63,7 @@ if (object.property == null) {
 
 It only assigns when property is not defined. It's especially handy for boolean variables - let's compare this to `||=` operator:
 
-```
+``` coffeescript
 # ||= operator
 variable = false
 variable ||= 'value'

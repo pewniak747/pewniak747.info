@@ -7,6 +7,7 @@ activate :syntax
 activate :directory_indexes
 activate :bourbon
 set :blog_layout_engine, :haml
+set :haml, { ugly: true }
 
 page "/feed.xml", :layout => false
 
