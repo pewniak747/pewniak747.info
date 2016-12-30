@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta content='IE=edge;chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/feed.xml' rel='alternate' title="Tomasz Pewiński's blog" type='application/rss+xml'>
+<link href='/favicon.ico' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css'>
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
+<title>Hooking autospec to GNOME notifications | Tomasz Pewiński</title>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27002819-3']);
+  _gaq.push(['_trackPageview']);
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div id='container'>
+<header>
+<a href='/' id='home'>
+<h1>Tomasz Pewinski</h1>
+</a>
+<nav>
+<ul>
+<li>
+<a href='/'>blog</a>
+</li>
+<li>&middot;</li>
+<li>
+<a href='/feed.xml'>rss feed</a>
+</li>
+<li>&middot;</li>
+<li>
+<a href='/about'>about me</a>
+</li>
+<li>&middot;</li>
+<li>
+<a href='https://twitter.com/pewniak747' target='_blank'>twitter</a>
+</li>
+<li>&middot;</li>
+<li>
+<a href='https://github.com/pewniak747' target='_blank'>github</a>
+</li>
+<li>&middot;</li>
+<li>
+<a href='https://linkedin.com/pub/tomasz-pewiński/70/955/94' target='_blank'>linkedin</a>
+</li>
+</ul>
+</nav>
+</header>
+<section id='content'>
+<article>
+<section class='heading'>
+<h1 class='title'>
+<a href='/2010/03/28/hooking-autospec-to-gnome/'>Hooking autospec to GNOME notifications</a>
+</h1>
+<time class='date' pubdate=''>28 Mar 2010</time>
+<div class='clearfix'></div>
+</section>
+<section class='content'><p>I was using <a href="http://rspec.info">rspec</a> to automate my tests, while writing <a href="http://github.com/pewniak747/snippet-gem">snippet-gem</a>. I strongly recommend this great tool!</p>
+
+<p>The problem was i had to look at the terminal all the time to check if my tests have passed. I found a nice way to hook it to GNOME notifications. It looks like this:</p>
+
+<p><img src="http://i40.tinypic.com/dp9374.png" alt="notification" /></p>
+
+<p>To achieve this, create a new file in your home directory, called .autotest, and fill in this code:</p>
+<pre class="highlight ruby"><code><span class="c1">#!/bin/ruby</span>
+<span class="nb">require</span> <span class="s1">'redgreen'</span>
+<span class="nb">require</span> <span class="s1">'autotest/timestamp'</span>
+
+<span class="k">module</span> <span class="nn">Autotest::GnomeNotify</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">notify</span> <span class="n">title</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">img</span>
+    <span class="nb">system</span> <span class="s2">"notify-send '</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">' '</span><span class="si">#{</span><span class="n">msg</span><span class="si">}</span><span class="s2">' -i </span><span class="si">#{</span><span class="n">img</span><span class="si">}</span><span class="s2"> -t 3000"</span>
+  <span class="k">end</span>
+  <span class="no">Autotest</span><span class="p">.</span><span class="nf">add_hook</span> <span class="ss">:ran_command</span> <span class="k">do</span> <span class="o">|</span><span class="n">at</span><span class="o">|</span>
+    <span class="n">image_root</span> <span class="o">=</span> <span class="s2">"~/.autotest_images"</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">at</span><span class="p">.</span><span class="nf">results</span><span class="p">].</span><span class="nf">flatten</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">.</span><span class="nf">gsub!</span><span class="p">(</span><span class="sr">/\\e\[\d+m/</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">results</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="sr">/(\d+)\sexamples?,\s(\d+)\sfailures?/</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="n">output</span><span class="p">.</span><span class="nf">inspect</span>
+    <span class="k">if</span> <span class="n">output</span>
+      <span class="k">if</span> <span class="vg">$~</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">to_i</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="n">notify</span> <span class="s2">"FAIL"</span><span class="p">,</span> <span class="s2">"</span><span class="si">#{</span><span class="n">output</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="si">#{</span><span class="n">image_root</span><span class="si">}</span><span class="s2">/fail.png"</span>
+      <span class="k">else</span>
+        <span class="n">notify</span> <span class="s2">"Pass"</span><span class="p">,</span> <span class="s2">"</span><span class="si">#{</span><span class="n">output</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="si">#{</span><span class="n">image_root</span><span class="si">}</span><span class="s2">/pass.png"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<p>You should also install a redgreen gem:</p>
+<pre class="highlight plaintext"><code>$ gem install redgreen
+</code></pre>
+<p>In .autotest_images/ directory paste some icons for fail.png and pass.png. <a href="http://iconspedia.com">Iconspedia</a> is my favourite source of  icons.</p>
+
+<p>Now you can enjoy running autospec with system notifications!</p>
+
+<p>Found <a href="http://automate-everything.com/2009/08/gnome-and-autospec-notifications/">here</a></p>
+</section>
+<section class='comments'><div id='disqus_thread'></div>
+<script>
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'pewniak747-info'; // required: replace example with your forum shortname
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the
+<a href='http://disqus.com/?ref_noscript'>comments powered by Disqus.</a>
+</noscript>
+<a class='dsq-brlink' href='http://disqus.com'>
+comments powered by
+<span class='logo-disqus'>Disqus</span>
+</a>
+</section>
+</article>
+
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,659 @@
+<?xml-stylesheet href="/stylesheets/style.css" type="text/stylesheet"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Tomasz Pewiński's blog</title>
+  <id>http://pewniak747.info/</id>
+  <link href="http://pewniak747.info/"/>
+  <link href="http://pewniak747.info/feed.xml" rel="self"/>
+  <updated>2014-04-09T20:10:00+02:00</updated>
+  <author>
+    <name>Tomasz Pewiński</name>
+  </author>
+  <entry>
+    <title>Scalar Conf 2014</title>
+    <link rel="alternate" href="/2014/04/09/scalar-conf-2014/"/>
+    <id>/2014/04/09/scalar-conf-2014/</id>
+    <published>2014-04-09T20:10:00+02:00</published>
+    <updated>2014-04-09T20:10:00+02:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;p&gt;Last week I had the pleasure to attend &lt;a href="http://scalar-conf.com"&gt;Scalar&lt;/a&gt; conference in Warsaw, Poland. This was my first conference specifically related to scala. Heck, even my first conference at which java isn’t used as a negative word :) So I thought I’d share my thoughts...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Last week I had the pleasure to attend &lt;a href="http://scalar-conf.com"&gt;Scalar&lt;/a&gt; conference in Warsaw, Poland. This was my first conference specifically related to scala. Heck, even my first conference at which java isn&amp;rsquo;t used as a negative word :) So I thought I&amp;rsquo;d share my thoughts about it.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been playing with scala for some time (mostly &lt;a href="http://playframework.com"&gt;Play! Framework&lt;/a&gt; and &lt;a href="http://akka.io"&gt;Akka&lt;/a&gt;), and was curious how the community looks like and what it has to say. I had a chance to meet scala folks from all around the Europe. They use the language for many different purposes. Overall, the conference was a great learning experience for me (I haven&amp;rsquo;t got time to stay at the party though, which is a shame).&lt;/p&gt;
+
+&lt;p&gt;Here are highlights from my favourite talks:&lt;/p&gt;
+
+&lt;h2&gt;database access with slick - Stefan Zeiger&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="http://twitter.com/StefanZeiger"&gt;Stefan&lt;/a&gt; introduced &lt;a href="http://slick.typesafe.com"&gt;slick&lt;/a&gt;, which is a library for accessing relational databases in scala. What&amp;rsquo;s great about it, it allows you to write code that feels like operating on a regular collection, yet talks to the database. Check out the samples &lt;a href="http://slick.typesafe.com/doc/2.0.0/gettingstarted.html#slick-examples"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Stefan also talked about what&amp;rsquo;s the future for slick. It&amp;rsquo;s going to be the default db driver in future versions of play, which I think is great (the current anorm requires you to type SQL by hand, and it&amp;rsquo;s not really great productivity-wise, especially for beginners like me :))&lt;/p&gt;
+
+&lt;h2&gt;simple, fast &amp;amp; agile rest with spray.io - Adam Warski&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="https://twitter.com/adamwarski"&gt;Adam&lt;/a&gt; showed how &lt;a href="http://spray.io"&gt;spray.io&lt;/a&gt; can be used to quickly create REST api&amp;rsquo;s, by (successfully!) live-coding on stage. I was really impressed, because when I tried using spray (maybe a year ago), I felt like groping in the dark. Spray definitely improved since then, and it seems like a great way to build web services. I especially liked the directive mechanism - how different functions combine to form an endpoint, passing immutable request model around (you could have a directive that accepts GET requests, another one that reacts only to specific path and third one acting as authentication layer). Adam covered testing the service too.&lt;/p&gt;
+
+&lt;p&gt;It probably wouldn&amp;rsquo;t fit in the timeslot, but I wish he mentioned how to integrate spray with akka for exposing your actor systems on the web (btw, spray will become a part of akka project in the future).&lt;/p&gt;
+
+&lt;h2&gt;doing crazy algebra with scala types - Jon Pretty&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="http://rapture.io"&gt;Jon&lt;/a&gt; had &amp;lsquo;crazy&amp;rsquo; in his talk title, and he delivered. Building up on small set of assumption (for example, a tuple (X, Y) is represented by multiplication, 2 represents a Boolean etc.), Jon formulated some interesting problems, and then solved them using mathematics and humour :) For example, he represented a List and binary Tree with arithmetic operations. Later on he even differentiated a List (a result of this operation was one-hole context, a list without its focus element). It definitely was one of the most entertaining and refreshing talks at scalar.&lt;/p&gt;
+
+&lt;p&gt;There were more interesting talks (&lt;a href="https://twitter.com/grzkubiak"&gt;Grzegorz Kubiak&lt;/a&gt; has demonstrated akka cluster of raspberry-pi&amp;rsquo;s, Mateusz Fedoryszak, Michal Oniszczuk and their quest to find the essence of academia using &lt;a href="http://spark.apache.org"&gt;spark&lt;/a&gt; for example) but those three are definitely my favourites.&lt;/p&gt;
+
+&lt;p&gt;Last but not least, it should be noted that the conference was organized really smoothly. The talks were just the right size, often breaks allowed for discussions, and lunch was delicious. And that&amp;rsquo;s despite the fact that&amp;rsquo;s scalar&amp;rsquo;s first edition - bravo to the organizers! I&amp;rsquo;m definitely looking forward to attending next year :)&lt;/p&gt;
+
+&lt;p&gt;By the way, and if you&amp;rsquo;re interested, check out my scala projects on github:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/pewniak747/music-match"&gt;music-match&lt;/a&gt;, a music recommendation engine&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/pewniak747/instapuzzle"&gt;instapuzzle&lt;/a&gt;, multiplayer jigsaw puzzle solving game&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Coffeescript's existential operator</title>
+    <link rel="alternate" href="/2013/08/24/coffeescripts-existential-operator/"/>
+    <id>/2013/08/24/coffeescripts-existential-operator/</id>
+    <published>2013-08-24T14:43:00+02:00</published>
+    <updated>2013-08-24T14:43:00+02:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;p&gt;Love it or hate it, coffeescript does make your front-end javascript code more concise. And one of its great features is existential operator, which helps to remove most of &lt;code&gt;null&lt;/code&gt; and &lt;code&gt;undefined&lt;/code&gt; checks. Let’s see how it works:&lt;/p&gt;
+
+&lt;p&gt;In its basic form, it’s...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Love it or hate it, coffeescript does make your front-end javascript code more concise. And one of its great features is existential operator, which helps to remove most of &lt;code&gt;null&lt;/code&gt; and &lt;code&gt;undefined&lt;/code&gt; checks. Let&amp;rsquo;s see how it works:&lt;/p&gt;
+
+&lt;p&gt;In its basic form, it&amp;rsquo;s pretty self-explainatory.&lt;/p&gt;
+&lt;pre class="highlight coffeescript"&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nx"&gt;variable&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;
+  &lt;span class="c1"&gt;# do something&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;typeof&lt;/span&gt; &lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="o"&gt;!==&lt;/span&gt; &lt;span class="s2"&gt;"undefined"&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="o"&gt;!==&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;// do something&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can chain these checks for deep object lookup:&lt;/p&gt;
+&lt;pre class="highlight coffeescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;property&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;subproperty&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But there&amp;rsquo;s more. Run a function only if it&amp;rsquo;s defined:&lt;/p&gt;
+&lt;pre class="highlight coffeescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;function&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;typeof&lt;/span&gt; &lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;property&lt;/span&gt; &lt;span class="o"&gt;===&lt;/span&gt; &lt;span class="s2"&gt;"function"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;property&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or lookup an array ony if it&amp;rsquo;s defined: (this one does not check if property is an array though)&lt;/p&gt;
+&lt;pre class="highlight coffeescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;property&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;_ref&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;_ref&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;property&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;_ref&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Existential operator can be used in assignment:&lt;/p&gt;
+&lt;pre class="highlight coffeescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;property&lt;/span&gt; &lt;span class="o"&gt;?=&lt;/span&gt; &lt;span class="s"&gt;'value'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;property&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;property&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'value'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It only assigns when property is not defined. It&amp;rsquo;s especially handy for boolean variables - let&amp;rsquo;s compare this to &lt;code&gt;||=&lt;/code&gt; operator:&lt;/p&gt;
+&lt;pre class="highlight coffeescript"&gt;&lt;code&gt;&lt;span class="c1"&gt;# ||= operator&lt;/span&gt;
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;false&lt;/span&gt;
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="o"&gt;||=&lt;/span&gt; &lt;span class="s"&gt;'value'&lt;/span&gt;
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="c1"&gt;# =&amp;gt; 'value'&lt;/span&gt;
+
+&lt;span class="c1"&gt;# ?= operator&lt;/span&gt;
+&lt;span class="nx"&gt;variable2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;false&lt;/span&gt;
+&lt;span class="nx"&gt;variable2&lt;/span&gt; &lt;span class="o"&gt;?=&lt;/span&gt; &lt;span class="s"&gt;'value'&lt;/span&gt;
+&lt;span class="nx"&gt;variable2&lt;/span&gt; &lt;span class="c1"&gt;# =&amp;gt; false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+  </entry>
+  <entry>
+    <title>Instant http server with python</title>
+    <link rel="alternate" href="/2013/07/02/instant-http-server-with-python/"/>
+    <id>/2013/07/02/instant-http-server-with-python/</id>
+    <published>2013-07-02T22:18:00+02:00</published>
+    <updated>2013-07-02T22:18:00+02:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;p&gt;Here’s an extremely useful one-liner that I’ve been using for ages.
+It starts a http server with the root in current directory, using python which is most likely already installed on your machine if you’re using Linux or OSX.&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;python -m SimpleHTTPServer...&lt;/code&gt;&lt;/pre&gt;</summary>
+    <content type="html">&lt;p&gt;Here&amp;rsquo;s an extremely useful one-liner that I&amp;rsquo;ve been using for ages.
+It starts a http server with the root in current directory, using python which is most likely already installed on your machine if you&amp;rsquo;re using Linux or OSX.&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;python -m SimpleHTTPServer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you go to &lt;a href="http://localhost:8000"&gt;http://localhost:8000&lt;/a&gt; you&amp;rsquo;ll see index.html if it&amp;rsquo;s present in current directory.&lt;/p&gt;
+
+&lt;p&gt;You can also boot up the server on any other port like this:&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;python -m SimpleHTTPServer 8888
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It&amp;rsquo;s useful for development, for example of Single Page Applications. Enjoy :)&lt;/p&gt;
+
+&lt;p&gt;EDIT:&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s how to do it in ruby:&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;ruby -run -e httpd -- -p 8000 .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ironically I always used python one even though I use ruby far more often :)&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Curl crash course</title>
+    <link rel="alternate" href="/2012/10/27/curl-crash-course/"/>
+    <id>/2012/10/27/curl-crash-course/</id>
+    <published>2012-10-27T02:00:00+02:00</published>
+    <updated>2012-10-27T02:00:00+02:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;p&gt;Debugging web services is a common task for web developer. Sometimes you want to have more control on the request you’re making - hitting reload in your browser might not be enough. That’s where curl comes in.&lt;/p&gt;
+
+&lt;p&gt;If you’re a web-dev you heard of it for...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Debugging web services is a common task for web developer. Sometimes you want to have more control on the request you&amp;rsquo;re making - hitting reload in your browser might not be enough. That&amp;rsquo;s where curl comes in.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re a web-dev you heard of it for sure, but maybe didn&amp;rsquo;t have time to read a lengthy man page and learn how to use it in day-to-day development. In this article I&amp;rsquo;ll show most useful ways of using curl.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re running a linux distribution, curl is available through your system&amp;rsquo;s package manager.&lt;/p&gt;
+
+&lt;h2&gt;Basic usage&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s as simple as &lt;code&gt;curl your-url&lt;/code&gt;. By default a body of HTTP response will be printed to &lt;code&gt;stdout&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;curl http://pewniak747.info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Adding -v is very useful - it lets you see whole HTTP request &amp;amp; response, and debug information:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;curl -v http://pewniak747.info
+
+* About to connect() to pewniak747.info port 80 (#0)
+*   Trying 74.117.156.115... connected
+&amp;gt; GET / HTTP/1.1
+&amp;gt; User-Agent: curl/7.22.0 (x86_64-pc-linux-gnu)
+&amp;gt; Host: pewniak747.info
+&amp;gt; Accept: */*
+&amp;gt; 
+&amp;lt; HTTP/1.1 200 OK
+&amp;lt; Server: nginx/1.1.4
+&amp;lt; Date: Sat, 27 Oct 2012 19:09:07 GMT
+&amp;lt; Content-Type: text/html
+&amp;lt; Content-Length: 5178
+&amp;lt; Last-Modified: Sat, 27 Oct 2012 13:30:31 GMT
+&amp;lt; Connection: keep-alive
+&amp;lt; Accept-Ranges: bytes
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Advanced usage&lt;/h2&gt;
+
+&lt;p&gt;Changing HTTP method (default is GET)&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;curl -X PUT http://api.example.com/endpoint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Query parameters:&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;curl http://api.example.com/endpoint?param&lt;span class="o"&gt;=&lt;/span&gt;value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sending data in request body (with &lt;code&gt;Content-Type: application/x-www-form-urlencoded&lt;/code&gt; header):&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;curl -d &lt;span class="s1"&gt;'param=value'&lt;/span&gt; -d &lt;span class="s1"&gt;'param2=other_value'&lt;/span&gt; http://api.example.com/endpoint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Note that adding &lt;code&gt;-X POST&lt;/code&gt; is not necessary - curl automatically assumes a POST)&lt;/p&gt;
+
+&lt;p&gt;To simulate a &lt;code&gt;Content-Type: multipart/form-data&lt;/code&gt; (form submitted by browser) use &lt;code&gt;-F&lt;/code&gt; instead of &lt;code&gt;-d&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;curl -F &lt;span class="s1"&gt;'param=value'&lt;/span&gt; -F &lt;span class="s1"&gt;'param2=other_value'&lt;/span&gt; http://api.example.com/endpoint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sending a file in the form:&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;curl -F &lt;span class="s1"&gt;'photo=@/path/to/file'&lt;/span&gt; http://api.example.com/endpoint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Adding headers:&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;curl -H &lt;span class="s2"&gt;"Authorization: b97e1222abe974191dfc65c8e2b2eb6b"&lt;/span&gt; http://api.example.com/endpoint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sending a cookie:&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;curl -b &lt;span class="s2"&gt;"session_id=4337a82f37c7218e41931b9bcc60c943"&lt;/span&gt; http://api.example.com/endpoint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fetching headers only (using HTTP HEAD method - can be handy if response body is long):&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;curl -I http://api.example.com/endpoint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Debugging JSON&lt;/h2&gt;
+
+&lt;p&gt;I recommend to install &lt;a href="https://github.com/smgt/colorful_json"&gt;colorful_json&lt;/a&gt; gem - piping curl to &lt;code&gt;cjson&lt;/code&gt; will nicely format the output:&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;curl https://api.flattr.com/rest/v2/users/smgt/things | cjson
+
+&lt;span class="o"&gt;[&lt;/span&gt;
+  &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;"type"&lt;/span&gt;: &lt;span class="s2"&gt;"thing"&lt;/span&gt;,
+    &lt;span class="s2"&gt;"resource"&lt;/span&gt;: &lt;span class="s2"&gt;"https://api.flattr.com/rest/v2/things/958860"&lt;/span&gt;,
+    &lt;span class="s2"&gt;"link"&lt;/span&gt;: &lt;span class="s2"&gt;"https://flattr.com/thing/958860"&lt;/span&gt;,
+    &lt;span class="s2"&gt;"id"&lt;/span&gt;: 958860
+  &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;]&lt;/span&gt;
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That&amp;rsquo;s all! I hope you learned useful ways of using curl to debug web services. Do you know other useful curl tricks, or use other tools to aid HTTP debugging? Let me know in the comments!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using xargs, sed and pipes</title>
+    <link rel="alternate" href="/2012/09/17/using-xargs-sed-and-pipes/"/>
+    <id>/2012/09/17/using-xargs-sed-and-pipes/</id>
+    <published>2012-09-17T02:00:00+02:00</published>
+    <updated>2012-09-17T02:00:00+02:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;h2&gt;Problem&lt;/h2&gt;
+
+&lt;p&gt;Upon migrating my blog to new engine, I had to rename bunch of article files.&lt;/p&gt;
+
+&lt;p&gt;As is: &lt;code&gt;source/2012/09/17/Using-xargs-and-sed.markdown&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Should be: &lt;code&gt;source/2012-09-17-using-xargs-and-sed.markdown&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;So basically to move files from nested directories...&lt;/p&gt;</summary>
+    <content type="html">&lt;h2&gt;Problem&lt;/h2&gt;
+
+&lt;p&gt;Upon migrating my blog to new engine, I had to rename bunch of article files.&lt;/p&gt;
+
+&lt;p&gt;As is: &lt;code&gt;source/2012/09/17/Using-xargs-and-sed.markdown&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Should be: &lt;code&gt;source/2012-09-17-using-xargs-and-sed.markdown&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;So basically to move files from nested directories into &lt;code&gt;source&lt;/code&gt; directory, downcasing and adding a prefix of year-month-day.&lt;/p&gt;
+
+&lt;h2&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Combination of &lt;code&gt;find&lt;/code&gt;, &lt;code&gt;xargs&lt;/code&gt;, &lt;code&gt;tr&lt;/code&gt; and &lt;code&gt;sed&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;find &lt;span class="nb"&gt;source&lt;/span&gt;/20??/&lt;span class="k"&gt;**&lt;/span&gt;/&lt;span class="k"&gt;*&lt;/span&gt;.markdown |
+xargs -n1 sh -c &lt;span class="s1"&gt;'echo $0 &amp;amp;&amp;amp; echo $0 | tr "[:upper:]" "[:lower:]" | sed -e s/\\//-/g -e s/^source-/source\\//'&lt;/span&gt; |
+xargs -n2 mv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the first line, we list all article files, using wildcards.&lt;/p&gt;
+
+&lt;p&gt;Then we&amp;rsquo;re piping the output to &lt;code&gt;xargs&lt;/code&gt; with &lt;code&gt;-n1&lt;/code&gt; switch, and a command. This will invoke the command for every (&lt;code&gt;-n1&lt;/code&gt;) line passing it as argument. The trick is, command to invoke is actually a new shell process with its own instructions passed after &lt;code&gt;-c&lt;/code&gt; switch!&lt;/p&gt;
+
+&lt;p&gt;In the subshell, we first print the original path (&lt;code&gt;$0&lt;/code&gt;, because it was the argumant passed to the shell). Then the path is processed:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tr &amp;quot;[:upper:]&amp;quot; &amp;quot;[:lower:]&amp;quot;&lt;/code&gt; converts it to lower-case letters&lt;/li&gt;
+&lt;li&gt;we&amp;rsquo;re using sed with two &lt;code&gt;-e&lt;/code&gt; switches:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;s/\\//-/g&lt;/code&gt; - replaces every occurence of &lt;code&gt;/&lt;/code&gt; for &lt;code&gt;-&lt;/code&gt;. I had to use &lt;code&gt;\\/&lt;/code&gt; because it is interpolated to string, being an argument to &lt;code&gt;sh -c&lt;/code&gt; command.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;s/^source-/source\\//&lt;/code&gt; - restore first slash after &lt;code&gt;source&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;no more pipes so processed path is printed to stdout.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now we have multiple lines of paths, original, then processed and so on:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;source/2012/09/17/Using-xargs-and-sed.markdown
+source/2012-09-17-using-xargs-and-sed.markdown
+source/2012/08/04/Checker-gem-for-ruby-rails-development.markdown
+source/2012-08-04-checker-gem-for-ruby-rails-development.markdown
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Piping that to &lt;code&gt;xargs -n2 mv&lt;/code&gt; will invoke &lt;code&gt;mv&lt;/code&gt; passing consecutive pairs of lines, which is just what we wanted!&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;mv source/2012/09/17/Using-xargs-and-sed.markdown source/2012-09-17-using-xargs-and-sed.markdown
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Have a better / more obvious solution? Let me know in the comments. Meanwhile, &amp;lt;3 UNIX.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Checker gem for Ruby &amp; Rails development</title>
+    <link rel="alternate" href="/2012/08/04/checker-gem-for-ruby-rails-development/"/>
+    <id>/2012/08/04/checker-gem-for-ruby-rails-development/</id>
+    <published>2012-08-04T02:00:00+02:00</published>
+    <updated>2012-08-04T02:00:00+02:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;p&gt;Recently, I had a chance to contribute to a nice ruby gem called &lt;a href="http://github.com/netguru/checker"&gt;Checker&lt;/a&gt;. As the name suggests, It’s an utility for checking source files.&lt;/p&gt;
+
+&lt;p&gt;What’s cool about it is that it’ll check files you’re committing via git for errors or unwanted phrases, and...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Recently, I had a chance to contribute to a nice ruby gem called &lt;a href="http://github.com/netguru/checker"&gt;Checker&lt;/a&gt;. As the name suggests, It&amp;rsquo;s an utility for checking source files.&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s cool about it is that it&amp;rsquo;ll check files you&amp;rsquo;re committing via git for errors or unwanted phrases, and will halt the commit if the check fails. No more typos &amp;amp; syntax errors in your repository!&lt;/p&gt;
+
+&lt;p&gt;It currently supports:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ruby syntax&lt;/li&gt;
+&lt;li&gt;haml &amp;amp; sass&lt;/li&gt;
+&lt;li&gt;checking for &lt;a href="http://pryrepl.org"&gt;binding.pry&lt;/a&gt; occurences&lt;/li&gt;
+&lt;li&gt;javascript &amp;amp; coffeescript lint&lt;/li&gt;
+&lt;li&gt;yaml parsing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So it&amp;rsquo;s perfect kit for day-to-day Rails development.&lt;/p&gt;
+
+&lt;p&gt;Installing is dead-simple via rubygems:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;gem install checker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And using is even simpler. Just say &lt;code&gt;checker&lt;/code&gt; to process staged git files:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;[ RUBY ]
+[ HAML ]
+[ PRY ]
+Checking source/2012/08/04/Checker-gem-for-ruby-rails-development.markdown... pry -&amp;gt; OK,  remote_pry -&amp;gt; OK
+[ COFFEESCRIPT ]
+[ JAVASCRIPT ]
+[ SASS ]
+[ YAML ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It&amp;rsquo;s convinient to add &lt;code&gt;checker&lt;/code&gt; to .git/hooks/pre-commit . That way every single commit will be processed before saving.&lt;/p&gt;
+
+&lt;p&gt;For some modules to work you may need to install additional executables. See the gem &lt;a href="http://github.com/netguru/checker#checker-"&gt;README&lt;/a&gt; for more info. I hope you find it useful!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Pivotal Tracker git post-receive hook</title>
+    <link rel="alternate" href="/2012/04/10/pivotaltracker-git-post-receive-hook/"/>
+    <id>/2012/04/10/pivotaltracker-git-post-receive-hook/</id>
+    <published>2012-04-10T02:00:00+02:00</published>
+    <updated>2012-04-10T02:00:00+02:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;p&gt;Github’s webhooks feature is great, hovewer many people still like to self-host their git repositories. I’m one of them, and I also like &lt;a href="http://pivotaltracker.com"&gt;Pivotal Tracker&lt;/a&gt; as project management tool. So I wrote this simple git hook to automatically hook up my commits...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Github&amp;rsquo;s webhooks feature is great, hovewer many people still like to self-host their git repositories. I&amp;rsquo;m one of them, and I also like &lt;a href="http://pivotaltracker.com"&gt;Pivotal Tracker&lt;/a&gt; as project management tool. So I wrote this simple git hook to automatically hook up my commits to stories in Pivotal. You will need ruby &amp;amp; nokogiri gem for this.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://gist.github.com/2352380"&gt;GitHub Gist&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To get it to work on your remote repo:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git clone git://gist.github.com/2352380.git /tmp
+mv /tmp/post-receive-pivotal $YOUR_GIT_REPO/.git/hooks/post-receive
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(alternatively you can keep it in .git/hooks/post-receive-pivotal and make original post-receive run it)&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;chmod +x $YOUR_GIT_REPO/.git/hooks/post-receive
+git config pivotal.token [YOUR_PIVOTAL_TOKEN]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you can do commit messages like &amp;ldquo;[finishes #123456] bugfix&amp;rdquo; and after you push comments will be added to your pivotal story.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://book.git-scm.com/5_git_hooks.html"&gt;Read more&lt;/a&gt; about awesome git hooks.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Find directories size</title>
+    <link rel="alternate" href="/2011/04/12/find-directories-size/"/>
+    <id>/2011/04/12/find-directories-size/</id>
+    <published>2011-04-12T02:00:00+02:00</published>
+    <updated>2011-04-12T02:00:00+02:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;p&gt;A nice one-liner that I use. Outputs subdirectories of current directory along with their size (in megabytes), sorted increasingly.&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;du -m --max-depth=1 | sort -n -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Drop it in your $PATH, chmod +x and enjoy!&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;A nice one-liner that I use. Outputs subdirectories of current directory along with their size (in megabytes), sorted increasingly.&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;du -m --max-depth=1 | sort -n -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Drop it in your $PATH, chmod +x and enjoy!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Hooking autospec to GNOME notifications</title>
+    <link rel="alternate" href="/2010/03/28/hooking-autospec-to-gnome/"/>
+    <id>/2010/03/28/hooking-autospec-to-gnome/</id>
+    <published>2010-03-28T01:00:00+01:00</published>
+    <updated>2010-03-28T01:00:00+01:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;p&gt;I was using &lt;a href="http://rspec.info"&gt;rspec&lt;/a&gt; to automate my tests, while writing &lt;a href="http://github.com/pewniak747/snippet-gem"&gt;snippet-gem&lt;/a&gt;. I strongly recommend this great tool!&lt;/p&gt;
+
+&lt;p&gt;The problem was i had to look at the terminal all the time to check if my tests have passed. I found a nice way to hook it to GNOME notifications...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I was using &lt;a href="http://rspec.info"&gt;rspec&lt;/a&gt; to automate my tests, while writing &lt;a href="http://github.com/pewniak747/snippet-gem"&gt;snippet-gem&lt;/a&gt;. I strongly recommend this great tool!&lt;/p&gt;
+
+&lt;p&gt;The problem was i had to look at the terminal all the time to check if my tests have passed. I found a nice way to hook it to GNOME notifications. It looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://i40.tinypic.com/dp9374.png" alt="notification" /&gt;&lt;/p&gt;
+
+&lt;p&gt;To achieve this, create a new file in your home directory, called .autotest, and fill in this code:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;#!/bin/ruby&lt;/span&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'redgreen'&lt;/span&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'autotest/timestamp'&lt;/span&gt;
+
+&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Autotest::GnomeNotify&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;notify&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;img&lt;/span&gt;
+    &lt;span class="nb"&gt;system&lt;/span&gt; &lt;span class="s2"&gt;"notify-send '&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;' '&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;' -i &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; -t 3000"&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="no"&gt;Autotest&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;add_hook&lt;/span&gt; &lt;span class="ss"&gt;:ran_command&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;at&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;image_root&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"~/.autotest_images"&lt;/span&gt;
+    &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;at&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;results&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nf"&gt;flatten&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;gsub!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/\\e\[\d+m/&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/(\d+)\sexamples?,\s(\d+)\sfailures?/&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;inspect&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vg"&gt;$~&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nf"&gt;to_i&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+        &lt;span class="n"&gt;notify&lt;/span&gt; &lt;span class="s2"&gt;"FAIL"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;image_root&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/fail.png"&lt;/span&gt;
+      &lt;span class="k"&gt;else&lt;/span&gt;
+        &lt;span class="n"&gt;notify&lt;/span&gt; &lt;span class="s2"&gt;"Pass"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;image_root&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/pass.png"&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You should also install a redgreen gem:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;$ gem install redgreen
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In .autotest_images/ directory paste some icons for fail.png and pass.png. &lt;a href="http://iconspedia.com"&gt;Iconspedia&lt;/a&gt; is my favourite source of  icons.&lt;/p&gt;
+
+&lt;p&gt;Now you can enjoy running autospec with system notifications!&lt;/p&gt;
+
+&lt;p&gt;Found &lt;a href="http://automate-everything.com/2009/08/gnome-and-autospec-notifications/"&gt;here&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Navigate trough browser tabs with mouse</title>
+    <link rel="alternate" href="/2010/01/26/navigate-through-browser-tabs-with-mouse-buttons/"/>
+    <id>/2010/01/26/navigate-through-browser-tabs-with-mouse-buttons/</id>
+    <published>2010-01-26T01:00:00+01:00</published>
+    <updated>2010-01-26T01:00:00+01:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;I got a wireless media-tech Syndic@tor mouse for xmas:) As you can see it has two extra buttons on the side, conveniently located under thumb. I was thinking how to use these cool buttons effectively.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://www.media-tech.eu/incl/mini.php?str=ZmlsZT0vdXBsb2FkL210MTA3MF8yXzAxLmpwZyZ3aWR0aD0xMjAwJmhlaWdodD0xMDYzJm1vZGU9bWluaQ==" alt="my-mouse"&gt;&lt;/p&gt;
+
+&lt;p&gt;At first I used them to switch...&lt;/p&gt;</summary>
+    <content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;I got a wireless media-tech Syndic@tor mouse for xmas:) As you can see it has two extra buttons on the side, conveniently located under thumb. I was thinking how to use these cool buttons effectively.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://www.media-tech.eu/incl/mini.php?str=ZmlsZT0vdXBsb2FkL210MTA3MF8yXzAxLmpwZyZ3aWR0aD0xMjAwJmhlaWdodD0xMDYzJm1vZGU9bWluaQ==" alt="my-mouse" /&gt;&lt;/p&gt;
+
+&lt;p&gt;At first I used them to switch to next/previous desktop on my GNOME environment. But I didn&amp;rsquo;t need it that much. Then I got an idea - switching tabs in firefox!&lt;/p&gt;
+
+&lt;p&gt;I created two simple scripts that send signals of keys being pressed. Ctrl+Tab is a shortcut for next tab, Ctrl+Shift+Tab for previous (it works on all popular browsers). Then I connected these scripts to mouse buttons, like shortcuts.&lt;/p&gt;
+
+&lt;h2&gt;Prepare&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;ll need a &lt;em&gt;xsendkeycode&lt;/em&gt; program. I assume you don&amp;rsquo;t have it on your linux desktop, so download it form repositories.&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;$ sudo apt-get install xsendkeycode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Write scripts&lt;/h2&gt;
+
+&lt;p&gt;Create these two scripts in a safe place:&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="c"&gt;# ff_nexttab.sh&lt;/span&gt;
+
+xsendkeycode 37 1
+xsendkeycode 23 1
+xsendkeycode 23 0
+xsendkeycode 37 0
+&lt;/code&gt;&lt;/pre&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="c"&gt;# ff_prevtab.sh&lt;/span&gt;
+
+xsendkeycode 37 1
+xsendkeycode 50 1
+xsendkeycode 23 1
+xsendkeycode 23 0
+xsendkeycode 50 0
+xsendkeycode 37 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Xsendkeycode sends key-pressed or key-released signal. 37 means LCtrl, 23 is Tab ans 50 RShift. 1 means press, 0 release. Can you see your browser&amp;rsquo;s shortcuts now?&lt;/p&gt;
+
+&lt;p&gt;Make both scripts executable!&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;$ chmod +x ff_nexttab.sh
+$ chmod +x ff_prevtab.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Connect&lt;/h2&gt;
+
+&lt;p&gt;Connecting scripts to mouse keys differs on various environments. I use GNOME with Compiz.&lt;/p&gt;
+
+&lt;p&gt;So, open up CompizConfig and navigate to &amp;ldquo;General -&amp;gt; Commands&amp;rdquo;. In fields 1 and 2 type absolute paths to your scripts, ie.&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;/home/pewniak747/Scripts/ff_nexttab.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, go to tab &amp;ldquo;mouse shortcuts&amp;rdquo; and set fields 1 and 2 to your mouse buttons. In my case these are buttons 8 and 9.&lt;/p&gt;
+
+&lt;p&gt;Voila! Enjoy surfing the internet with mouse in your hands!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Adding rss feed in Jekyll</title>
+    <link rel="alternate" href="/2010/01/24/adding-rss-in-jekyll/"/>
+    <id>/2010/01/24/adding-rss-in-jekyll/</id>
+    <published>2010-01-24T01:00:00+01:00</published>
+    <updated>2010-01-24T01:00:00+01:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;p&gt;Recently I wanted to add an rss feed to my Jekyll-based blog. Unfortunately there is no support for this. Quite strange…&lt;/p&gt;
+
+&lt;p&gt;I ended up with creating simple feed.xml to be processed with Jekyll. Once you create it, there’s no need of updating when posting...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Recently I wanted to add an rss feed to my Jekyll-based blog. Unfortunately there is no support for this. Quite strange&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I ended up with creating simple feed.xml to be processed with Jekyll. Once you create it, there&amp;rsquo;s no need of updating when posting.&lt;/p&gt;
+&lt;pre class="highlight xml"&gt;&lt;code&gt;---
+layout: putsomerandomstringhere
+---
+&lt;span class="cp"&gt;&amp;lt;?xml version="1.0" encoding="UTF-8"?&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;rss&lt;/span&gt; &lt;span class="na"&gt;version=&lt;/span&gt;&lt;span class="s"&gt;"2.0"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;channel&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;put your blog's title here&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;description&amp;gt;&lt;/span&gt;put your blog's description here&lt;span class="nt"&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;link&amp;gt;&lt;/span&gt;http://yoururl.com&lt;span class="nt"&gt;&amp;lt;/link&amp;gt;&lt;/span&gt;
+    {% for post in site.posts %}
+      &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{{ post.title }}&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;description&amp;gt;&lt;/span&gt;{{ post.content | xml_escape }}&lt;span class="nt"&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;link&amp;gt;&lt;/span&gt;http://yoururl.com{{ post.url }}&lt;span class="nt"&gt;&amp;lt;/link&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+    {% endfor %}
+  &lt;span class="nt"&gt;&amp;lt;/channel&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/rss&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Strange layout prevents from ignoring page by Jekyll, and xml_escape prepares post content to be displayed in rss feed.&lt;/p&gt;
+
+&lt;p&gt;References: &lt;a href="http://www.rss-specifications.com/creating-rss-feeds.htm"&gt;http://www.rss-specifications.com/creating-rss-feeds.htm&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Jekyll basics tutorial</title>
+    <link rel="alternate" href="/2009/12/22/jekyll_basics_tutorial/"/>
+    <id>/2009/12/22/jekyll_basics_tutorial/</id>
+    <published>2009-12-22T01:00:00+01:00</published>
+    <updated>2009-12-22T01:00:00+01:00</updated>
+    <author>
+      <name>Tomasz Pewiński</name>
+    </author>
+    <summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This tutorial will be about a great tool I found couple weeks ago, called &lt;a href="http://wiki.github.com/mojombo/jekyll"&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Jekyll is a “blog-aware, static site generator”. What does it mean? Well, basically it generates complete static html site based on your templates. It...&lt;/p&gt;</summary>
+    <content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This tutorial will be about a great tool I found couple weeks ago, called &lt;a href="http://wiki.github.com/mojombo/jekyll"&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Jekyll is a &amp;ldquo;blog-aware, static site generator&amp;rdquo;. What does it mean? Well, basically it generates complete static html site based on your templates. It&amp;rsquo;s great for small, informative webpages or minimalistic, yet powerful blogs. It runs this one too:)&lt;/p&gt;
+
+&lt;p&gt;Imagine you are creating a simple web page for a client. Nothing fancy, just plain HTML + CSS, some sub-pages containing informations about the company, products, contact info, etc. Normally you&amp;rsquo;ll create many HTML files, each one containing the same headers and other stuff, over and over. You&amp;rsquo;ll probably make many mistakes:(.&lt;/p&gt;
+
+&lt;p&gt;But there&amp;rsquo;s more convenient way to do this. Jekyll to the rescue!&lt;/p&gt;
+
+&lt;h2&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Jekyll installation is easy-as-pie through &lt;a href="http://rubyforge.org/frs/?group_id=126"&gt;rubygems&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;$ sudo gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You&amp;rsquo;ll probably need to install rubygems first. And &lt;a href="http://ruby-lang.org"&gt;Ruby&lt;/a&gt; itself, if you already don&amp;rsquo;t got it. Shame on you!&lt;/p&gt;
+
+&lt;p&gt;Once Jekyll has been installed, lets go to our working directory and create some stuff.&lt;/p&gt;
+
+&lt;h2&gt;Directory structure&lt;/h2&gt;
+
+&lt;p&gt;To work with Jekyll you need to create following directories and files:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&amp;#95;config.yml - this file will contain all configuration for Jekyll to run. Leave it empty for now.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&amp;#95;layouts - this will contain all, well, layouts:) We&amp;rsquo;ll get to it in a while.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&amp;#95;includes&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Layouts&lt;/h2&gt;
+
+&lt;p&gt;Layouts are the files used on the top of rendering new page. They&amp;rsquo;ll basically contain DOCTYPE, &amp;lt;head&amp;gt; and such stuff.&lt;/p&gt;
+
+&lt;p&gt;Go on and create your first layout in &amp;#95;layouts dir, called &amp;ldquo;main.html&amp;rdquo;. Put in this code:&lt;/p&gt;
+&lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;html&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;"http://www.w3.org/1999/xhtml"&lt;/span&gt; &lt;span class="na"&gt;lang=&lt;/span&gt;&lt;span class="s"&gt;"en"&lt;/span&gt; &lt;span class="na"&gt;xml:lang=&lt;/span&gt;&lt;span class="s"&gt;"en"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;My page&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;http-equiv=&lt;/span&gt;&lt;span class="s"&gt;"content-type"&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;"text/html; charset=UTF-8"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;http-equiv=&lt;/span&gt;&lt;span class="s"&gt;"content-language"&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;"en"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    {% assign content_tag = '{{ content }}' %}{{ content_tag }}
+  &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice the strange &amp;ldquo; {{ content&lt;em&gt;tag }} &amp;rdquo; statement? That&amp;rsquo;s the _liquid tag&lt;/em&gt; : &lt;a href="http://www.liquidmarkup.org/"&gt;Liquid&lt;/a&gt; is a templating language which Jekyll uses. We&amp;rsquo;ll be seeing such tags quite often in the future.&lt;/p&gt;
+
+&lt;p&gt;So what does it do? All contents rendered will be placed instead of this tag. So basically Layout is the static part of your site (eg. header, logo, navigation), while content changes depending on what sub-site is user visiting.&lt;/p&gt;
+
+&lt;h2&gt;Pages&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s go on and create our first page. That will be probably index.html. But see how it differs from ordinary index.html:&lt;/p&gt;
+&lt;pre class="highlight html"&gt;&lt;code&gt;---
+layout: main
+title: Home page
+---
+
+&lt;span class="nt"&gt;&amp;lt;h1&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"color1"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Welcome to my site.&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;My name is Tomasz 'pewinak747' Pewinski blablabla...&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pretty short, huh? We don&amp;rsquo;t need to write all unnesessary boring DOCTYPES, &amp;lt;body&amp;gt;s etc, it all will be inserted instead of {{ content_tag }} by Jekyll magic.&lt;/p&gt;
+
+&lt;p&gt;YAML front matter (&amp;rsquo;&amp;ndash;&amp;ndash;&amp;ndash;&amp;rsquo;) is our spell. See how we told Jekyll to use main layout to render this page?&lt;/p&gt;
+
+&lt;h2&gt;Showtime!&lt;/h2&gt;
+
+&lt;p&gt;Time to see Jekyll in action! But first, open &amp;#95;config.yml that I mentioned before and insert following lines:&lt;/p&gt;
+&lt;pre class="highlight yaml"&gt;&lt;code&gt;&lt;span class="na"&gt;server&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
+&lt;span class="na"&gt;auto&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first one fires up a simple server, so we can see changes by pointing the browser to &lt;a href="http://localhost:4000"&gt;localhost:4000&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Second command invokes automatic Jekyll update when any of project files was changed, preventing us from running Jekyll all the time manually.&lt;/p&gt;
+
+&lt;p&gt;Once you saved the &amp;#95;config.yml, navigate to your working directory and execute Jekyll:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&amp;amp; cd path/to/project
+&amp;amp; jekyll
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(If you dislike editing config files you could use:)&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;$ jekyll --server --auto
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Point your browser to localhost and see the page source. index.html has been merged with main.html to produce full-equipped standalone index.html, which lives in just created &lt;em&gt;&amp;#95;site&lt;/em&gt; directory. Magic!&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s see some more. Go back to your layout and edit &amp;lt;title&amp;gt; tag:&lt;/p&gt;
+&lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{% assign title_tag='{{ page.title }}' %}{{ title_tag }}&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Refresh, and parameter &amp;lsquo;title&amp;rsquo; specified in YAML front matter in index.html will be placed instead of this tag. You can pass any parameter and display it that way.&lt;/p&gt;
+
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;With this tutorial you will be able to create simple web pages. In future tutorails I&amp;rsquo;ll show some advanced Jekyll features eg. posts, embeded ruby code or includes. See you soon!&lt;/p&gt;
+</content>
+  </entry>
+</feed>
