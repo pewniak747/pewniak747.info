@@ -1,10 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rack-contrib'
 gem 'builder'
-gem 'capistrano', '>= 2.0', '< 3.0'
 gem 'haml'
-gem 'hpricot'
 gem 'middleman'
 gem 'middleman-blog'
 gem 'middleman-syntax'
