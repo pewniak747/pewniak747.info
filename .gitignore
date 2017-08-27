@@ -1,0 +1,5 @@
+.sass-cache/*
+build/*
+source/drafts/*
+ideas.md
+.rbenv-version
