@@ -12,31 +12,26 @@
     %title= "#{is_blog_article? ? "#{current_article.title} | " : ""}Tomasz Pewiński"
     = partial 'google_analytics'
   %body
-    #container
-      %header
-        %a#home{href: '/'}
+    %header{class: 'header--collapsed'}
+      .container
+        %a{href: '/'}
           %h1 Tomasz Pewinski
         %nav
           %ul
             %li
               %a{href: '/'}blog
-            %li &middot;
             %li
               %a{href: '/feed.xml'}rss feed
-            %li &middot;
             %li
               %a{href: '/about'}about me
-            %li &middot;
             %li
               %a{href: 'https://twitter.com/pewniak747', target: '_blank'}twitter
-            %li &middot;
             %li
               %a{href: 'https://github.com/pewniak747', target: '_blank'}github
-            %li &middot;
             %li
               %a{href: 'https://linkedin.com/pub/tomasz-pewiński/70/955/94', target: '_blank'}linkedin
-      %section#content
-        - if is_blog_article?
-          = partial 'article', locals: { article: current_article }
-        - else
-          = yield
+    %section.container
+      - if is_blog_article?
+        = partial 'article', locals: { article: current_article }
+      - else
+        = yield

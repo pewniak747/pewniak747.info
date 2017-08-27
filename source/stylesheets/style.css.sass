@@ -11,66 +11,53 @@ a
   color: $basic
   text-decoration: none
 
-header
-  text-align: center
-  padding: 80px 0
+.header--collapsed
   margin-bottom: 50px
-  box-shadow: 0 5px 0 lighten($basic, 35%)
-  background-color: $basic
-  color: #fff
-  a
-    color: #fff
-  a#home
-    display: inline-block
+
+  &::before
+    content: ''
+    height: 5px
+    display: block
+    background-color: lighten($basic, 50%)
+    border-top: 5px solid $basic
+
   h1
-    font-size: 3em
     transition: color 300ms linear, text-shadow 300ms linear
-    margin: 0 30px 10px 30px
-    font-weight: normal
     &:hover
-      color: lighten($basic, 50%)
-      text-shadow: 0px -1px 0px #374683
-  h1, h2
-    display: inline-block
+      color: lighten($basic, 10%)
+      text-shadow: 0px -1px 0px #eee
+
   nav
-    margin: 0
-    margin-top: 40px
     ul
       padding: 0
       margin: 0
       list-style: none
     li
-      display: block
-      margin: 0 5px
-      letter-spacing: 1px
+      display: inline-block
+      line-height: 2em
+      &:not(:last-child)::after
+        margin: 0 3px
+        content: '\00B7' // &middot;
 
-#content
+.container
   max-width: 800px
   margin: auto
-  margin-bottom: 50px
-  padding: 0 30px 30px 30px
+  padding: 0 10px
 
 .post-listing
   list-style: none
   margin: 0
+  margin-bottom: 50px
   padding: 0
-  text-align: center
   h2
-    margin: 5px 0
-    line-height: 1.5
-  .separator
-    color: #eee
-  li:last-child .separator
-    display: none
+    font-size: 1.3em
 
 article
-  padding: 10px
   .heading
-    margin: 5px 0
+    margin-bottom: 30px
     h1.title
-      text-align: center
       font-size: 2.6em
-      margin-top: 0
+      margin: 0
     .date
       color: #666
       font-size: 12px
@@ -86,12 +73,7 @@ article
     a
       text-decoration: underline
 
-#disqus_thread
-  margin-top: 30px
-  padding-top: 30px
-  border-top: 1px solid #eee
-
-#me
+.profile-picture
   float: none
   margin: 0
   width: 100%
@@ -113,23 +95,16 @@ article
   clear: both
 
 @media (min-width: 900px)
-  header
-    h1
-      font-size: 4em
-    nav
-      li
-        display: inline-block
-
-  article
-    .heading
-      h1.title
-        text-align: left
-
-  #me
+  .profile-picture
     float: right
     margin-left: 30px
     max-width: 300px
     min-width: 150px
     width: 50%
     position: relative
-    top: -60px
+    top: -40px
+
+#disqus_thread
+  margin-top: 30px
+  padding-top: 30px
+  border-top: 1px solid #eee
