@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta content='IE=edge;chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/feed.xml' rel='alternate' title="Tomasz Pewiński's blog" type='application/rss+xml'>
+<link href='/favicon.ico' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css'>
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
+<title>Tracking asynchronous operations with redux | Tomasz Pewiński</title>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27002819-3']);
+  _gaq.push(['_trackPageview']);
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<header class='header--collapsed'>
+<div class='container'>
+<a href='/'>
+<h1>Tomasz Pewinski</h1>
+</a>
+<nav>
+<ul>
+<li>
+<a href='/'>blog</a>
+</li>
+<li>
+<a href='/feed.xml'>rss feed</a>
+</li>
+<li>
+<a href='/about'>about me</a>
+</li>
+<li>
+<a href='https://twitter.com/pewniak747' target='_blank'>twitter</a>
+</li>
+<li>
+<a href='https://github.com/pewniak747' target='_blank'>github</a>
+</li>
+<li>
+<a href='https://linkedin.com/pub/tomasz-pewiński/70/955/94' target='_blank'>linkedin</a>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<section class='container'>
+<article>
+<section class='heading'>
+<h1 class='title'>
+<a href='/2017/09/09/tracking-asynchronous-operations-with-redux/'>Tracking asynchronous operations with redux</a>
+</h1>
+<time class='date' pubdate=''> 9 Sep 2017</time>
+<div class='clearfix'></div>
+</section>
+<section class='content'><p>A frequent complaint against <a href="https://github.com/reactjs/redux">redux</a> is the amount of code needed to achieve seemingly simple things.
+Which gets worse when those simple things are also common, leading to lots and lots of similar code.
+This is often dubbed <em>boilerplate</em>, and posed to be obviously bad (after all, Don&rsquo;t Repeat Yourself is the law, right?).</p>
+
+<p>Not necessarily so (I think DRY is a very overrated principle, but that&rsquo;s a thought for another post).
+One thing the boilerplate is useful for is identifying patterns.
+If there&rsquo;s a lot of identical code in multiple places in the codebase (not two, not three, ideally four or more), that&rsquo;s a strong indicator we&rsquo;re missing an <em>abstraction</em>.</p>
+
+<p>There&rsquo;s a particular use case for abstractions in redux apps - happens very often, feels repetitive, and could use a better solution.</p>
+
+<p>That use case is: <strong>performing AJAX requests</strong>.</p>
+
+<p><em>(note: if all your app really does is simple data fetching - <a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367">You might not need redux</a>)</em></p>
+
+<h2>Requirements</h2>
+
+<p>Let&rsquo;s identify what are the requirements of a feature that fetches a list of widgets.</p>
+
+<p>The redux state needs to know:</p>
+
+<ul>
+<li>Whether the widgets are loading or not</li>
+<li>Whether the widgets have been loaded successfully or not</li>
+<li>Error details if the request has failed</li>
+<li>The widget data itself</li>
+</ul>
+
+<p>A common way to implement this feature with redux (using best practices for action creators etc) involves writing:</p>
+
+<ul>
+<li>3 action types (<code>WIDGETS_REQUEST</code>, <code>WIDGETS_SUCCESS</code>, <code>WIDGETS_FAILURE</code>)</li>
+<li>3 action creators (<code>widgetsRequest</code>, <code>widgetsSuccess</code>, <code>widgetsFailure</code>)</li>
+<li>A reducer that sets the appropriate fields in the state</li>
+<li>A <a href="https://github.com/gaearon/redux-thunk">thunk</a> dispatching the actions and performing the ajax request itself</li>
+</ul>
+
+<p>It might look like this:</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">WIDGETS_REQUEST</span> <span class="o">=</span> <span class="s1">'WIDGETS_REQUEST'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">WIDGETS_SUCCESS</span> <span class="o">=</span> <span class="s1">'WIDGETS_SUCCESS'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">WIDGETS_FAILURE</span> <span class="o">=</span> <span class="s1">'WIDGETS_FAILURE'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">widgetsRequest</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">WIDGETS_REQUEST</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">widgetsSuccess</span><span class="p">(</span><span class="nx">widgets</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">WIDGETS_SUCCESS</span><span class="p">,</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="p">{</span> <span class="nx">widgets</span> <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">widgetsFailure</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">WIDGETS_FAILURE</span><span class="p">,</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="p">{</span> <span class="nx">error</span> <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">widgets</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">isLoading</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">isLoaded</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">error</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="na">WIDGETS_REQUEST</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">initialState</span><span class="p">,</span>
+        <span class="na">isLoading</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="k">case</span> <span class="na">WIDGETS_SUCCESS</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">initialState</span><span class="p">,</span>
+        <span class="na">isLoaded</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">widgets</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">widgets</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="k">case</span> <span class="na">WIDGETS_FAILURE</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">initialState</span><span class="p">,</span>
+        <span class="na">error</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">error</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">fetchWidgetsThunk</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dispatch</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">dispatch</span><span class="p">(</span><span class="nx">widgetsRequest</span><span class="p">());</span>
+    <span class="nx">fetch</span><span class="p">(</span><span class="s1">'/widgets.json'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+        <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">widgetsSuccess</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">widgets</span><span class="p">)),</span>
+        <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">widgetsFailure</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">)),</span>
+      <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>For the sake of simplicity, the example assumes we&rsquo;re not storing our widgets in a normalized state shape (<a href="http://redux.js.org/docs/recipes/reducers/NormalizingStateShape.html">which is recommended</a>), and instead just keep them in a list.</p>
+
+<p>Even so, it&rsquo;s quite a lot of code&hellip; If we&rsquo;re not using the <a href="https://github.com/erikras/ducks-modular-redux">ducks pattern</a>, it&rsquo;s also spread across multiple files / directories.
+And don&rsquo;t forget the tests for it!</p>
+
+<p>The biggest overhead is in implementing the reducer that tracks the request state (<code>isLoading</code>, <code>isLoaded</code>, <code>error</code> fields).
+Let&rsquo;s see if we can find an abstraction here.</p>
+
+<h2>Operations</h2>
+
+<p>We can think of fetching the widgets as an asynchronous operation.
+There are three possible actions (start, success, failure) that might change its state.
+The state changes are defined as follows:</p>
+
+<ul>
+<li>start action makes the operation pending</li>
+<li>success action makes the operation finished (not pending) and successful</li>
+<li>failure action makes the operation finished and not successful - with optional error details</li>
+</ul>
+
+<p>The reducer and actions behave in the same way for every operation.</p>
+
+<p>Now that the functionality is defined and isolated, we can abstract it away.
+Imagine a <code>createOperation</code> function that accepts a string (unique operation name) and returns an object with action types, action creators and a reducer, already wired up to work together:</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">operation</span> <span class="o">=</span> <span class="nx">createOperation</span><span class="p">(</span><span class="s1">'NAME'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">START</span><span class="p">,</span> <span class="nx">SUCCESS</span><span class="p">,</span> <span class="nx">FAILURE</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">operation</span><span class="p">.</span><span class="nx">actionTypes</span><span class="p">;</span>
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">failure</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">operation</span><span class="p">.</span><span class="nx">actionCreators</span><span class="p">;</span>
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">reducer</span><span class="p">,</span> <span class="nx">initialState</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">operation</span><span class="p">;</span>
+<span class="cm">/*
+initialState = {
+  pending: false,
+  success: false,
+  failure: false,
+  errors: null
+}
+*/</span>
+</code></pre>
+<p>In this state shape, <code>isFetching</code> and <code>isFetched</code> are renamed to more fitting <code>pending</code> and <code>success</code> boolean fields. Also, the <code>failure</code> boolean is separate from optional <code>errors</code> details.</p>
+
+<p>When the actions <code>start</code>, <code>success</code> and <code>failure</code> are dispatched to the store, the generated reducer causes a state update (setting the appropriate boolean fields and error details).
+We also export <code>initialState</code> (useful for tests) and action types (so other reducers can react to the actions, for example by saving data somewhere else in the state).</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">pendingState</span> <span class="o">=</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">initialState</span><span class="p">,</span> <span class="nx">start</span><span class="p">());</span>
+<span class="c1">// { pending: true, success: false, failure: false, errors: null }</span>
+<span class="kr">const</span> <span class="nx">successState</span> <span class="o">=</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">pendingState</span><span class="p">,</span> <span class="nx">success</span><span class="p">({</span> <span class="na">payloadExample</span><span class="p">:</span> <span class="p">[]</span> <span class="p">}));</span>
+<span class="c1">// { pending: false, success: true, failure: false, errors: null }</span>
+<span class="kr">const</span> <span class="nx">failureState</span> <span class="o">=</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">pendingState</span><span class="p">,</span> <span class="nx">failure</span><span class="p">(</span><span class="s1">'An error'</span><span class="p">));</span>
+<span class="c1">// { pending: false, success: false, failure: true, errors: 'An error' }</span>
+</code></pre>
+<p>With the <code>createOperation</code> function, the widgets feature now looks like this:</p>
+<pre class="highlight javascript"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'redux'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">fetchOperation</span> <span class="o">=</span> <span class="nx">createOperation</span><span class="p">(</span><span class="s1">'FETCH_WIDGETS'</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">widgetsReducer</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">fetchOperation</span><span class="p">.</span><span class="nx">actionTypes</span><span class="p">.</span><span class="nx">SUCCESS</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">;</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">reducer</span> <span class="o">=</span> <span class="nx">combineReducers</span><span class="p">({</span>
+  <span class="na">widgets</span><span class="p">:</span> <span class="nx">widgetsReducer</span><span class="p">,</span>
+  <span class="na">status</span><span class="p">:</span> <span class="nx">fetchOperation</span><span class="p">.</span><span class="nx">reducer</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">fetchWidgetsThunk</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dispatch</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="p">{</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">failure</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">fetchOperation</span><span class="p">.</span><span class="nx">actionCreators</span><span class="p">;</span>
+    <span class="nx">dispatch</span><span class="p">(</span><span class="nx">start</span><span class="p">());</span>
+    <span class="nx">fetch</span><span class="p">(</span><span class="s1">'/widgets.json'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+        <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">success</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">widgets</span><span class="p">)),</span>
+        <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">failure</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">))</span>
+      <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>This is much shorter! The mundane details of tracking the pending / successful / error states are abstracted away by the <code>fetchOperation</code>, and stored in a separate slice of state (in this case, <code>status</code>).</p>
+
+<h2>Summary</h2>
+
+<p>There are a <a href="https://github.com/gaearon/redux-thunk">multitude</a> <a href="https://github.com/redux-saga/redux-saga">of</a> <a href="https://www.npmjs.com/package/redux-api-middleware">existing</a> <a href="https://github.com/acdlite/redux-promise">ways</a> to handle AJAX requests with redux. However, they still require implementing the same reducer logic over and over again.</p>
+
+<p>Using the operation abstraction has following benefits:</p>
+
+<ul>
+<li>Reduces the amount of redux code / test code written for tracking the request status. This decreases the possibility of bugs.</li>
+<li>Decouples data state (widget attributes) from meta-data state (are widgets loading?).</li>
+<li>Can be used with <a href="https://github.com/gaearon/redux-thunk">thunks</a>, <a href="https://github.com/redux-saga/redux-saga">sagas</a>, <a href="https://www.npmjs.com/package/redux-api-middleware">custom middlewares</a>, or any other method for handling async effects. Simply use the generated action creators!</li>
+<li>Does not depend on anything other than the existing redux abstractions.</li>
+<li>By exporting action types, other reducers can react to single operation state changes as well.</li>
+<li>Can be used to track any kind of asynchronous operation, not limited to fetching and updating data via AJAX.</li>
+</ul>
+
+<p>To me, this solution shows the beauty of redux: it is simple and powerful.
+Because redux is so unopinionated, and uses plain objects and functions (no magic), it can sometimes feel verbose.
+But developers are able to create and compose elegant abstractions on top of it.</p>
+
+<p>Speaking of which, implementing the <code>createOperation</code> function is left as an excercise to the reader.
+You can treat it as a programming koan to sharpen your skills.
+If you&rsquo;re interested, my implementation is available below:
+<details>
+<summary>See the code</summary></p>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">createOperation</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">START</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">/START`</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">SUCCESS</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">/SUCCESS`</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">FAILURE</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">/FAILURE`</span><span class="p">;</span>
+
+  <span class="kr">const</span> <span class="nx">start</span> <span class="o">=</span> <span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="nx">START</span><span class="p">,</span> <span class="nx">payload</span> <span class="p">});</span>
+  <span class="kr">const</span> <span class="nx">success</span> <span class="o">=</span> <span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="nx">SUCCESS</span><span class="p">,</span> <span class="nx">payload</span> <span class="p">});</span>
+  <span class="kr">const</span> <span class="nx">failure</span> <span class="o">=</span> <span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="nx">FAILURE</span><span class="p">,</span> <span class="nx">payload</span> <span class="p">});</span>
+
+  <span class="kr">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">pending</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">failure</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">errors</span><span class="p">:</span> <span class="kc">null</span>
+  <span class="p">};</span>
+
+  <span class="kr">const</span> <span class="nx">reducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="na">START</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">initialState</span><span class="p">,</span> <span class="na">pending</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+      <span class="k">case</span> <span class="na">SUCCESS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">initialState</span><span class="p">,</span> <span class="na">success</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+      <span class="k">case</span> <span class="na">FAILURE</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">initialState</span><span class="p">,</span> <span class="na">failure</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">errors</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span> <span class="p">};</span>
+      <span class="nl">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="kr">const</span> <span class="nx">actionCreators</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">failure</span> <span class="p">};</span>
+  <span class="kr">const</span> <span class="nx">actionTypes</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">START</span><span class="p">,</span> <span class="nx">SUCCESS</span><span class="p">,</span> <span class="nx">FAILURE</span> <span class="p">};</span>
+
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">actionCreators</span><span class="p">,</span> <span class="nx">actionTypes</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">reducer</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+<p></details></p>
+</section>
+<section class='comments'><div id='disqus_thread'></div>
+<script>
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'pewniak747-info'; // required: replace example with your forum shortname
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the
+<a href='http://disqus.com/?ref_noscript'>comments powered by Disqus.</a>
+</noscript>
+<a class='dsq-brlink' href='http://disqus.com'>
+comments powered by
+<span class='logo-disqus'>Disqus</span>
+</a>
+</section>
+</article>
+
+</section>
+</body>
+</html>
