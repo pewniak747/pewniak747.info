@@ -1,6 +1,6 @@
 ---
 title: Testing redux action sequences
-date: 2017/11/01
+date: 2017/12/09
 ---
 
 Testing the features implemented with redux (actions, reducers) is conceptually quite easy. This is due to redux' simplicity. Actions are plain objects, and reducers are pure functions that accept everything they need as arguments. There's no need to mock the external world.
