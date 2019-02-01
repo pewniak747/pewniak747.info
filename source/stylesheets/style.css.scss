@@ -84,8 +84,8 @@ a {
  */
 .articles {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0 0 $rhythm-2;
 }
 
 .articles__title {
