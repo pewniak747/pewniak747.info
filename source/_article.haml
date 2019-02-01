@@ -1,7 +1,7 @@
-%article
-  %section.heading
-    %h1.title
+%article.article
+  %section.article-header
+    %h1.article-header__title
       %a{:href => article.url}= article.title
-    %time.date{:pubdate => ""}= article.date.strftime('%e %b %Y')
-  %section.content= article.body
-  %section.comments= partial 'comments'
+    %time.article-header__date{:pubdate => ""}= article.date.strftime('%e %b %Y')
+  %section.article-content= article.body
+  %section.article-comments= partial 'comments'

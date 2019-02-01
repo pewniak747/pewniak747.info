@@ -1,5 +1,5 @@
-%ul.post-listing
+%ul.articles
   - blog.articles.each do |article|
     %li
       %a{href: article.url}
-        %h2= article.title
+        %h2.articles__title= article.title

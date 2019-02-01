@@ -1,0 +1,162 @@
+$primary: #353277;
+$deep-gray: #333;
+
+/**
+ * Global styles
+ */
+html, body {
+  font-family: "HelveticaNeue", helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/**
+ * Site header
+ */
+.site-header--collapsed {
+  margin-bottom: 50px;
+
+  &::before {
+    content: "";
+    height: 5px;
+    display: block;
+    background-color: lighten($primary, 50%);
+    border-top: 5px solid $primary;
+  }
+}
+
+.site-header__title {
+  transition: color 300ms linear, text-shadow 300ms linear;
+
+  &:hover {
+    color: lighten($primary, 10%);
+    text-shadow: 0px -1px 0px #eee;
+  }
+}
+
+/**
+ * Navigation
+ */
+.navigation {}
+
+.navigation__items {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navigation__item {
+  display: inline-block;
+  line-height: 2em;
+
+  &:not(:last-child)::after {
+    margin: 0 3px;
+    content: "·";
+  }
+}
+
+/**
+ * Articles list
+ */
+.articles {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 50px;
+  padding: 0;
+}
+
+.articles__title {
+  font-size: 1.3em;
+}
+
+/**
+ * Article
+ */
+.article {}
+
+.article-header {
+  margin-bottom: 30px;
+}
+
+.article-header__title {
+  font-size: 2.6em;
+  margin: 0;
+}
+
+.article-header__date {
+  color: #666;
+  font-size: 12px;
+  margin-top: 30px;
+  display: inline-block;
+}
+
+.article-content {
+  p, li {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  p > code {
+    background-color: #eee;
+    padding: 2px 5px;
+    border-radius: 4px;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.article-comments {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+.profile-picture {
+  float: none;
+  margin: 0;
+  width: 100%;
+  top: 0;
+}
+
+.highlight {
+  padding: 0 1em;
+  margin: 1em 0;
+  border: 1px solid #666;
+  border-radius: 3px;
+
+  code {
+    font-family: "Inconsolata", monospace;
+    line-height: 1.5;
+    white-space: inherit;
+    overflow-x: scroll;
+    margin: 13px 0;
+    display: block;
+  }
+}
+
+@media (min-width: 900px) {
+  .profile-picture {
+    float: right;
+    margin-left: 30px;
+    max-width: 300px;
+    min-width: 150px;
+    width: 50%;
+    position: relative;
+    top: -40px;
+  }
+}
