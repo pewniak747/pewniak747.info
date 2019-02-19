@@ -12,24 +12,25 @@
     %title= "#{is_blog_article? ? "#{current_article.title} | " : ""}Tomasz Pewiński"
     = partial 'google_analytics'
   %body
-    %header.site-header--collapsed
-      .container
-        %a{href: '/'}
-          %h1.site-header__title Tomasz Pewinski
-        %nav.navigation
-          %ul.navigation__items
-            %li.navigation__item
-              %a{href: '/about'}about me
-            %li.navigation__item
-              %a{href: '/feed.xml'}rss
-            %li.navigation__item
-              %a{href: 'https://twitter.com/pewniak747', target: '_blank'}twitter
-            %li.navigation__item
-              %a{href: 'https://github.com/pewniak747', target: '_blank'}github
-            %li.navigation__item
-              %a{href: 'https://linkedin.com/pub/tomasz-pewiński/70/955/94', target: '_blank'}linkedin
-    %section.container
-      - if is_blog_article?
-        = partial 'article', locals: { article: current_article }
-      - else
-        = yield
+    .root
+      %header.site-header--collapsed
+        .container
+          %a{href: '/'}
+            %h1.site-header__title Tomasz Pewinski
+          %nav.navigation
+            %ul.navigation__items
+              %li.navigation__item
+                %a{href: '/about'}about me
+              %li.navigation__item
+                %a{href: '/feed.xml'}rss
+              %li.navigation__item
+                %a{href: 'https://twitter.com/pewniak747', target: '_blank'}twitter
+              %li.navigation__item
+                %a{href: 'https://github.com/pewniak747', target: '_blank'}github
+              %li.navigation__item
+                %a{href: 'https://linkedin.com/pub/tomasz-pewiński/70/955/94', target: '_blank'}linkedin
+      %section.container
+        - if is_blog_article?
+          = partial 'article', locals: { article: current_article }
+        - else
+          = yield

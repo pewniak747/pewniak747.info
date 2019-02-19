@@ -21,12 +21,24 @@ html, body {
   line-height: 1.5em;
   margin: 0;
   padding: 0;
-  background-color: #fff;
 }
 
 a {
   color: $primary;
   text-decoration: none;
+}
+
+/**
+ * Color the background when overscrolling
+ */
+html {
+  background-color: $primary;
+}
+
+.root {
+  background-color: #fff;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .container {
