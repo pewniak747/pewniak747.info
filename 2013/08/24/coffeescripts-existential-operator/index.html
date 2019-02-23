@@ -24,7 +24,9 @@
 
 </head>
 <body>
+<div class='root'>
 <header class='site-header--collapsed'>
+<div class='surprise'></div>
 <div class='container'>
 <a href='/'>
 <h1 class='site-header__title'>Tomasz Pewinski</h1>
@@ -124,5 +126,36 @@ comments powered by
 </article>
 
 </section>
+</div>
+<script>
+  (function() {
+    var active = false;
+    var doc = document.documentElement;
+    var element = document.querySelector('.surprise');
+    var color = "#353277";
+  
+    function clamp(min, max, value) {
+      return Math.min(max, Math.max(min, value));
+    }
+  
+    function onscroll(event) {
+      var scrollY = window.scrollY;
+  
+      if (scrollY < 0) {
+        if (!active) {
+          doc.style['background'] = color;
+          element.textContent = "hello!";
+          active = true;
+        }
+        var margin = clamp(-90, 0, -90 - scrollY);
+        element.style['margin-top'] = margin + "px";
+      } else if (scrollY > 0 && active) {
+        doc.style['background'] = "none";
+        active = false;
+      }
+    }
+    window.addEventListener('scroll', onscroll, { passive: true });
+  })();
+</script>
 </body>
 </html>
