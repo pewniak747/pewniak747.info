@@ -23,13 +23,11 @@
               %li.navigation__item
                 %a{href: '/about'}about me
               %li.navigation__item
-                %a{href: '/feed.xml'}rss
-              %li.navigation__item
-                %a{href: 'https://twitter.com/pewniak747', target: '_blank'}twitter
-              %li.navigation__item
                 %a{href: 'https://github.com/pewniak747', target: '_blank'}github
               %li.navigation__item
                 %a{href: 'https://linkedin.com/pub/tomasz-pewiński/70/955/94', target: '_blank'}linkedin
+              %li.navigation__item
+                %a{href: '/feed.xml'}rss
       %section.container
         - if is_blog_article?
           = partial 'article', locals: { article: current_article }
