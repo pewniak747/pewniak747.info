@@ -16,7 +16,7 @@ $rhythm-3: 4.5rem; // 72px
  * Global styles
  */
 html, body {
-  font-family: "HelveticaNeue", helvetica, sans-serif;
+  font-family: -apple-system, "Roboto", sans-serif;
   font-size: $font-size;
   line-height: 1.5em;
   margin: 0;
@@ -27,7 +27,6 @@ html, body {
 
 a {
   color: $primary;
-  text-decoration: none;
 }
 
 .root {
@@ -65,7 +64,7 @@ a {
 /**
  * Site header
  */
-.site-header--collapsed {
+.site-header {
   margin-bottom: $rhythm-2;
 
   &::before {
@@ -83,7 +82,14 @@ a {
   margin: $rhythm-1 / 2 0;
   font-size: $font-size-xl;
   line-height: 1.5em;
+  position: relative;
+  left: -5px;
+}
+
+.site-header__title-link {
   transition: color 300ms linear, text-shadow 300ms linear;
+  text-decoration: none;
+  color: $text-body-color;
 
   &:hover {
     color: lighten($primary, 10%);
@@ -109,6 +115,10 @@ a {
     margin: 0 3px;
     content: "·";
   }
+
+  a {
+    color: $text-body-color;
+  }
 }
 
 /**
@@ -123,13 +133,35 @@ a {
 .articles__title {
   font-size: $font-size-m;
   line-height: 1.5em;
-  margin: $rhythm-1 / 2 0;
+  margin: $rhythm-1 / 4 0;
+  display: inline-block;
+}
+
+.articles__date {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .articles__date {
+    display: inline-block;
+    color: $deep-gray;
+    font-size: $font-size-s;
+
+    &::before {
+      margin: 0 3px;
+      content: "·";
+    }
+  }
 }
 
 /**
  * Article
  */
 .article {}
+
+.article--narrow {
+  max-width: 30em;
+}
 
 .article-header {
   margin-bottom: $rhythm-1;
@@ -190,13 +222,6 @@ a {
   border-top: 1px solid $light-gray;
 }
 
-.profile-picture {
-  display: block;
-  margin: auto;
-  max-height: $rhythm-1 * 10;
-  margin-bottom: $rhythm-1;
-}
-
 .highlight {
   padding: 0;
   margin: $rhythm-1 0;
@@ -210,15 +235,5 @@ a {
     white-space: inherit;
     overflow-x: scroll;
     display: block;
-  }
-}
-
-@media (min-width: 900px) {
-  .profile-picture {
-    float: right;
-    margin-left: $rhythm-1;
-    max-height: $rhythm-1 * 12;
-    position: relative;
-    top: -1 * $rhythm-1;
   }
 }

@@ -7,25 +7,26 @@
     %link{href: '/feed.xml', rel: 'alternate', type: 'application/rss+xml', title: 'Tomasz Pewiński\'s blog'}
     %link{rel: 'shortcut icon', href: '/favicon.ico'}
     %link{href: '//fonts.googleapis.com/css?family=Inconsolata', rel: 'stylesheet', type: 'text/css'}
+    %link{href: '//fonts.googleapis.com/css?family=Roboto', rel: 'stylesheet', type: 'text/css'}
     %link{type: 'text/css', rel: 'stylesheet', href: '/stylesheets/syntax.css'}
     %link{type: 'text/css', rel: 'stylesheet', href: '/stylesheets/style.css'}
     %title= "#{is_blog_article? ? "#{current_article.title} | " : ""}Tomasz Pewiński"
     = partial 'google_analytics'
   %body
     .root
-      %header.site-header--collapsed
+      %header.site-header
         .surprise
         .container
-          %a{href: '/'}
-            %h1.site-header__title Tomasz Pewinski
+          %h1.site-header__title
+            %a.site-header__title-link{href: '/'}Tomasz Pewiński
           %nav.navigation
             %ul.navigation__items
               %li.navigation__item
-                %a{href: '/about'}about me
+                %a{href: '/about'}about
               %li.navigation__item
-                %a{href: 'https://github.com/pewniak747', target: '_blank'}github
+                %a{href: 'https://github.com/pewniak747', target: '_blank'}code
               %li.navigation__item
-                %a{href: 'https://linkedin.com/pub/tomasz-pewiński/70/955/94', target: '_blank'}linkedin
+                %a{href: 'https://linkedin.com/pub/tomasz-pewiński/70/955/94', target: '_blank'}work
               %li.navigation__item
                 %a{href: '/feed.xml'}rss
       %section.container

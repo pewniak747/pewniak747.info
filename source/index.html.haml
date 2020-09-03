@@ -1,5 +1,6 @@
 %ul.articles
   - blog.articles.each do |article|
     %li
-      %a{href: article.url}
-        %h2.articles__title= article.title
+      %h2.articles__title
+        %a{href: article.url}= article.title
+      %time.articles__date= article.date.strftime('%B %e, %Y')
