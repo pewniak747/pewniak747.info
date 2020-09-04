@@ -71,6 +71,7 @@ a {
   margin-bottom: $rhythm-2;
 
   &::before {
+    /*
     content: "";
     width: 100%;
     height: 5px;
@@ -78,6 +79,7 @@ a {
     background: $primary;
     position: absolute;
     top: 0;
+    */
   }
 }
 

@@ -6,7 +6,7 @@
   var ctx = canvas.getContext('2d')
   var devicePixelRatio = window.devicePixelRatio || 1;
   var widthPx = 3000
-  var heightPx = 50
+  var heightPx = 500
   canvas.style.width = widthPx + "px";
   canvas.style.height = heightPx + "px";
   canvas.width = widthPx * devicePixelRatio;
@@ -15,7 +15,7 @@
   var heights = []
 
   var color = "#353277";
-  var stepWidth = 20
+  var stepWidth = 10
 
   function scale(value) {
     return value * devicePixelRatio;
@@ -27,15 +27,31 @@
     return scale(value)
   }
 
+  var countX = Math.floor(widthPx / stepWidth)
+  var countY = Math.floor(heightPx / stepWidth)
+
   function seed(random) {
     noise.seed(random)
-    heights = Array(1000).fill(null).map((_, idx) => {
-      // return 0.5 + 0.5 * Math.random()
-      var perlinLowFx = noise.perlin2(idx / 10, 0.5) / 2 + 0.5;
-      var perlinHighFx = noise.perlin2(idx / 3, 0.5) / 2 + 0.5;
-      // var perlinSum = (perlinLowFx + perlinHighFx) / 2;
-      var perlinSum = perlinLowFx
-      return perlinSum
+    heights = Array(countX).fill(null).map((_, idxX) => {
+      return Array(countY).fill(null).map((_, idxY) => {
+        var wetAbove = (idxY / countY)
+        var wetBelow = (idxY + 3) / countY;
+        var threshold = (idxY + (countY / 100)) / countY;
+        // console.log(idxY, threshold)
+
+        // var rand = Math.random();
+        var rand = noise.perlin2(idxX / 20, idxY / 3) * 0.1 + Math.random() * 0.9;
+
+
+        return rand > threshold ? (1 - wetAbove) + wetAbove * rand : (1 - wetBelow) * rand
+
+        return Math.min(1, (1 - wet) + (1 - wet) * Math.random())
+        var perlinLowFx = noise.perlin2(idxX / 10, idxY / 10) / 2 + 0.5;
+        var perlinHighFx = noise.perlin2(idxX / 3, idxY / 3) / 2 + 0.5;
+        var perlinSum = (perlinLowFx + perlinHighFx) / 2;
+        // var perlinSum = perlinLowFx
+        return perlinSum
+      })
     })
   }
 
@@ -44,45 +60,15 @@
     ctx.fillStyle = '#fff'
     ctx.fillRect(x(0), y(0), x(widthPx), y(heightPx))
 
-    var foregroundBaselineY = 10;
-    var backgroundBaselineY = foregroundBaselineY + 10;
-    var variableHeight = heightPx - backgroundBaselineY
-    console.log(variableHeight)
-
-    // Draw background
+    // Draw pixels
     ctx.save();
-    ctx.beginPath()
-    ctx.moveTo(x(0), y(0));
-    let currentX = 0;
-    heights.forEach(height => {
-      var currentY = backgroundBaselineY + height * variableHeight * extent
-      ctx.lineTo(x(currentX), y(currentY));
-      currentX = currentX + stepWidth;
-      ctx.lineTo(x(currentX), y(currentY));
-      ctx.lineTo(x(currentX), y(backgroundBaselineY));
+    heights.forEach((heights, idxX) => {
+      heights.forEach((height, idxY) => {
+        ctx.fillStyle = '#353277';
+        ctx.globalAlpha = height
+        ctx.fillRect(x(idxX * stepWidth), y(idxY * stepWidth), scale(stepWidth), scale(stepWidth))
+      })
     })
-    ctx.lineTo(x(currentX), y(0));
-    ctx.closePath()
-    ctx.fillStyle = '#c4c2e6';
-    ctx.fill()
-    ctx.restore();
-
-    // Draw foreground
-    ctx.save();
-    ctx.beginPath()
-    ctx.moveTo(x(0), y(0));
-    currentX = 0;
-    heights.forEach(height => {
-      var currentY = foregroundBaselineY + (height * variableHeight * extent);
-      ctx.lineTo(x(currentX), y(currentY));
-      currentX = currentX + stepWidth;
-      ctx.lineTo(x(currentX), y(currentY));
-      ctx.lineTo(x(currentX), y(foregroundBaselineY));
-    })
-    ctx.lineTo(x(currentX), y(0));
-    ctx.closePath()
-    ctx.fillStyle = '#353277';
-    ctx.fill()
     ctx.restore();
   }
 
