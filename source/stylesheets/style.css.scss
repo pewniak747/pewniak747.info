@@ -40,6 +40,8 @@ a {
 }
 
 .surprise {
+  overflow: hidden;
+  /*
   background-color: lighten($primary, 50%);
   display: block;
   height: 100px;
@@ -51,6 +53,7 @@ a {
   font-size: $font-size-xl;
   font-weight: bold;
   color: $primary;
+  */
 }
 
 .container {
