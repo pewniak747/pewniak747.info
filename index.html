@@ -140,35 +140,11 @@
 
 </section>
 </div>
-<script>
-  (function() {
-    var active = false;
-    var doc = document.documentElement;
-    var element = document.querySelector('.surprise');
-    var color = "#353277";
-  
-    function clamp(min, max, value) {
-      return Math.min(max, Math.max(min, value));
-    }
-  
-    function onscroll(event) {
-      var scrollY = window.scrollY;
-  
-      if (scrollY < 0) {
-        if (!active) {
-          doc.style['background'] = color;
-          element.textContent = "hello!";
-          active = true;
-        }
-        var margin = clamp(-90, 0, -90 - scrollY);
-        element.style['margin-top'] = margin + "px";
-      } else if (scrollY > 0 && active) {
-        doc.style['background'] = "none";
-        active = false;
-      }
-    }
-    window.addEventListener('scroll', onscroll, { passive: true });
-  })();
-</script>
+<script src='/d3-color.v1.min.js'></script>
+<script src='/d3-interpolate.v1.min.js'></script>
+<script src='/d3-scale.v3.min.js'></script>
+<script src='/d3-delaunay.min.js'></script>
+<script src='/perlin.js'></script>
+<script src='/surprise.js'></script>
 </body>
 </html>
