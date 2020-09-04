@@ -34,5 +34,9 @@
           = partial 'article', locals: { article: current_article }
         - else
           = yield
+    %script{src: "/d3-color.v1.min.js"}
+    %script{src: "/d3-interpolate.v1.min.js"}
+    %script{src: "/d3-scale.v3.min.js"}
+    %script{src: "/d3-delaunay.min.js"}
     %script{src: "/perlin.js"}
     %script{src: "/surprise.js"}

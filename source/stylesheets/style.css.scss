@@ -40,20 +40,7 @@ a {
 }
 
 .surprise {
-  overflow: hidden;
-  /*
-  background-color: lighten($primary, 50%);
-  display: block;
-  height: 100px;
-  width: 100%;
-  margin-top: -90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: $font-size-xl;
-  font-weight: bold;
-  color: $primary;
-  */
+  height: $rhythm-3;
 }
 
 .container {
@@ -69,18 +56,7 @@ a {
  */
 .site-header {
   margin-bottom: $rhythm-2;
-
-  &::before {
-    /*
-    content: "";
-    width: 100%;
-    height: 5px;
-    display: block;
-    background: $primary;
-    position: absolute;
-    top: 0;
-    */
-  }
+  overflow-x: hidden;
 }
 
 .site-header__title {
